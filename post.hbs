@@ -1,0 +1,53 @@
+{{!< default}}
+
+{{> header}}
+
+<div class="container">
+
+	<div class="row">
+
+		<div class="col-md-12">
+			{{#post}}
+				<article>
+					<header>
+						<time datetime="{{date format="YYYY-MM-DD"}}" 
+							itemprop="datePublished">
+							{{date format='dddd DD MMM YYYY'}}
+						</time>
+						<h1 itemprop="headline">{{title}}</h1>
+					</header>
+					<section itemprop="articleBody">
+						{{content}}
+					</section>
+					{{#if tags}}
+						<div class="alert">
+							Tags: {{tags separator=" | "}}
+						</div>
+					{{/if}}
+			    	
+			        {{#if author}}
+			        <footer>
+			        	<address itemscope itemtype="http://schema.org/Person">
+			        		{{#if author.image}}
+			        			<img src="{{author.image}}" itemprop="image" />
+			        		{{/if}}
+			        		<h4>
+			        			<span itemprop="author">{{author.name}}</span>
+			        		</h4>
+			        		{{#if author.website}}
+			        			<a href="{{author.website}}" itemprop="url">{{author.website}}</a>
+			        		{{/if}}
+			        	</address>
+			        	<p>{{author.bio}}</p>
+			        </footer>
+			        {{/if}}
+				</article>
+			{{/post}}
+			{{#if pagination}}
+				{{{pagination}}}
+			{{/if}}
+		</div>
+	</div>
+</div>
+
+{{> footer}}
