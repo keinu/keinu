@@ -315,23 +315,66 @@ function ($, _, d3, moment) {
 		svg.append("g")
 			.attr("class", "xaxis")
 			.call(xAxis);
-	}
 
-
-	var rotateExperiences = function(i){
-		if (i >= 1) {
-			$(svg.selectAll("g.bar:nth-child(" + i + ")")).d3Click();
-		} else {
-			clearInterval(inteval);
+		var rotateExperiences = function(i){
+			if (i >= 1) {
+				$(svg.selectAll("g.bar:nth-child(" + i + ")")).d3Click();
+			} else {
+				clearInterval(inteval);
+			}
 		}
+
+		var i = svg.selectAll("g.bar")[0].length;
+		rotateExperiences(i--);
+		var inteval = setInterval(function() {
+			rotateExperiences(i--);
+		}, 2000)
+
 	}
 
-	var i = svg.selectAll("g.bar")[0].length;
-	rotateExperiences(i--);
-	var inteval = setInterval(function() {
-		rotateExperiences(i--);
-	}, 2000)
+	// Contact me stuff
+	$(document).on("submit", "form", function(e){
 
+		e.preventDefault();
+
+		$("form .help-block").html("");
+		var btn = $(this).find("button").button('loading');
+
+		$.ajax({
+
+			method: "POST",
+			data: $("form").serialize(),
+			url: "http://www.janveu.com/do.php",
+			dataType: "jsonp"
+
+		}).done(function(data) {
+
+			btn.button('reset');
+
+			if (data.status == "success") {
+
+				$("form > .lead").html("Thank you! <br />I'll get back to you.");
+				$("form .form-group").hide();
+
+			} else {
+
+				if(data.email) {
+					$("form [name='email'] + .help-block").html(data.email);
+					$("form [name='email']").parent(".form-group").addClass("has-error");
+				}
+				if(data.name) {
+					$("form [name='name'] + .help-block").html(data.name);
+					$("form [name='name']").parent(".form-group").addClass("has-error");
+				}
+				if(data.message) {
+					$("form [name='message'] + .help-block").html(data.message);
+					$("form [name='message']").parent(".form-group").addClass("has-error");
+				}
+
+			}
+		});
+		$("form button").html("Sending...");
+	})
 				
 });
 
