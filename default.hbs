@@ -20,7 +20,18 @@
 		<link rel="stylesheet" type="text/css" href="/assets/css/style.css" />
 	</head>
 	<body class="{{body_class}}">
-		{{{body}}}
-		<script type="text/javascript" src="/assets/js/lib/require.js" data-main="/assets/js/app.js"></script>
+	
+		<div id="wrapper">
+
+			{{> header}}
+
+			<section>
+				{{{body}}}
+			</section>
+
+			<script type="text/javascript" src="/assets/js/lib/require.js" 
+				data-main="/assets/js/app.js"></script>
+			{{> footer}}
+		</div>
 	</body>
 </html>
