@@ -12,5 +12,5 @@ github_username: keinu
 # Build settings
 markdown: kramdown
 
-# Plugins
-gems: ['jekyll-less']
+sass:
+  style: compressed

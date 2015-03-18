@@ -1,5 +1,5 @@
 requirejs.config({
-    baseUrl: '/keinu/js/lib/',
+    baseUrl: '/js/lib/',
     shim: {
         "bootstrap": {
             deps: ["jquery"]
