@@ -1,0 +1,240 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+body {
+  font-family: 'Raleway', sans-serif;
+  font-size: 18px;
+  color: #ccc;
+  background-color: #000;
+}
+body #wrapper {
+  min-height: 100%;
+  position: relative;
+}
+body #wrapper > .container {
+  padding-bottom: 100px;
+}
+body #wrapper section {
+  margin-top: 10px;
+  padding-bottom: 100px;
+}
+body #wrapper footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /*height:60px;   /* Height of the footer */
+}
+body main {
+  margin-top: 20px;
+}
+body main .row > div {
+  padding-top: 20px;
+  background-color: #222;
+}
+#splash-wrapper {
+  background-image: url("../images/keinu-raw.png");
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-size: contain;
+  width: 100%;
+  max-width: 680px;
+  position: relative;
+  overflow: hidden;
+  margin: auto;
+  top: 50px;
+  margin-bottom: 100px;
+}
+#splash-wrapper #splash {
+  background-image: url("../images/keinu-glow.png");
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-size: contain;
+  opacity: 0.9;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+}
+#splash-wrapper .splash-content {
+  position: relative;
+  margin-bottom: 30px;
+  margin-top: 250px;
+}
+#splash-wrapper .splash-content h1 {
+  margin-bottom: 60px;
+  text-align: center;
+}
+#splash-wrapper .splash-content a {
+  margin: auto;
+  display: block;
+  width: 200px;
+  text-align: center;
+  border: 2px solid white;
+  padding: 10px 20px 0;
+  color: white;
+  font-size: 40px;
+  cursor: pointer;
+  border-radius: 3px;
+}
+#navwrapper {
+  padding-bottom: 70px;
+  margin-bottom: 20px;
+}
+#navwrapper .navbar-brand {
+  padding: 0;
+  margin-right: 20px;
+  padding-right: 10px;
+}
+#navwrapper .navbar-brand:after {
+  content: "";
+  border-right: 1px solid #FFFFFF;
+  display: block;
+  float: right;
+  height: 22px;
+  margin-left: 15px;
+  margin-top: 15px;
+}
+#navwrapper .navbar-brand img {
+  float: left;
+  height: 50px;
+}
+.home-content {
+  opacity: 0;
+}
+.container .titles {
+  text-align: right;
+}
+.container .titles h2 {
+  text-transform: uppercase;
+  text-shadow: 0 0 5px #fff;
+  font-size: 30px;
+  color: #fff;
+  font-weight: bold;
+  margin-top: 0;
+}
+.container .contents {
+  margin-bottom: 40px;
+}
+.container .contents h3 {
+  margin-top: 50px;
+}
+.container .dl-horizontal {
+  margin-bottom: 80px;
+}
+.container .dl-horizontal dt {
+  font-weight: normal;
+  position: static;
+  width: 25%;
+  height: 100%;
+  padding: 0 25px 0 0;
+}
+.container .dl-horizontal dd {
+  position: static;
+  margin-left: 25%;
+}
+.container .dl-horizontal dd h3 {
+  margin-top: 0;
+}
+.container .dl-horizontal.dl-content dd {
+  margin-bottom: 40px;
+}
+@media (max-width: 992px) {
+  .container .titles {
+    text-align: left;
+  }
+  .container .dl-horizontal dt,
+  .container .dl-horizontal dd {
+    width: 100%;
+    margin: 0;
+    margin-bottom: 20px;
+  }
+}
+.donuts {
+  margin: 0 auto;
+  overflow: hidden;
+}
+.donuts > svg {
+  float: left;
+  overflow: visible;
+  padding: 10px;
+  margin: 10px;
+}
+.donuts path {
+  -webkit-filter: drop-shadow(-5px -5px 5px #ffffff);
+  filter: drop-shadow(-5px -5px 5px #ffffff);
+}
+.donuts path.color0 {
+  fill: #fff;
+}
+.donuts path.color1 {
+  fill: #222222;
+}
+.donuts text {
+  font-size: 2rem;
+  fill: #fff;
+  font-family: 'Raleway', sans-serif;
+}
+.donuts .donut-label {
+  text-align: center;
+  display: table-cell;
+  vertical-align: bottom;
+  width: 100px;
+  height: 50px;
+  line-height: 20px;
+  margin: 0;
+  padding-bottom: 5px;
+}
+footer {
+  padding: 20px;
+  background-color: #222;
+}
+footer p {
+  font-size: 16px;
+  margin-bottom: 0;
+}
+footer img {
+  -webkit-filter: drop-shadow(0 0 0 #ffffff);
+  transition: .2s;
+  height: 50px;
+}
+footer img:hover {
+  -webkit-filter: drop-shadow(0 0 2px #ffffff);
+}
+.xaxis text,
+.xaxis .domain {
+  fill: white;
+}
+.xaxis .tick line {
+  stroke: white;
+  shape-rendering: crispEdges;
+}
+.bar {
+  cursor: pointer;
+}
+.bar rect {
+  fill: #444;
+}
+.bar.selected rect {
+  fill: white;
+}
+.bar .textbar {
+  cursor: pointer;
+  fill: black;
+}
+#distribution-details h3 {
+  font-size: 30px;
+}
+#distribution-details h4 {
+  margin: 0;
+  font-size: 28px;
+}
+#distribution-details h5 {
+  color: white;
+  font-size: 25px;
+}
+form {
+  margin-bottom: 20px;
+}
