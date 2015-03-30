@@ -576,3 +576,6 @@ Front end design patterns and functionality framework implementation.",
 	]
 }
 </script>
+Apple
+:   Pomaceous fruit of plants of the genus Malus in 
+    the family Rosaceae.
