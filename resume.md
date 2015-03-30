@@ -212,7 +212,7 @@ permalink: /resume/
 					Module development for a gastronomical website.<br />
 					Remote work.
 					Technologies: HTML / CSS / Flash / PHP / MySQL
-				</dt>
+				</dd>
 			</dl>
 		</div>
 	</div>
@@ -234,7 +234,7 @@ permalink: /resume/
 					Vast range of profit and non-for-profit oriented websites and application development.<br />
 					Fullstack development, research, marketing, webdesign, search engine optimisation, traffic management.<br />
 					Non-exhaustive list of technologies: Node.js, MongoDB, KeystoneJs, Ghost, ExpressJs, Jade, Handlebars, Wordpress, PHP, HTML, JavaScript, Flash, API Mashups, P2P networks.<br />
-				</dt>
+				</dd>
 			</dl>
 		</div>
 	</div>
@@ -283,7 +283,7 @@ permalink: /resume/
 						<small>English language equivalence will vary</small>
 					</h3>
 					Software development and embedded software development in industrial environment. 
-				</dt>
+				</dd>
 			</dl>
 		</div>
 	</div>
@@ -575,7 +575,4 @@ Front end design patterns and functionality framework implementation.",
 		}
 	]
 }
-</script>
-Apple
-:   Pomaceous fruit of plants of the genus Malus in 
-    the family Rosaceae.
+
