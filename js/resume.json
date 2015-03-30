@@ -1,0 +1,353 @@
+{
+	"summary": "Lorem ipsum",
+	"skills": [
+		{
+			"area" : "Web development",
+			"skills": ["HTML", "CSS", "JavaScript", "Usability", "Accessibility", "WebRTC", "JSTL", "Java", "NodeJs", "Mongo", "PHP", "SQL"]
+		},
+		{
+			"area" : "Web design",
+			"skills": ["Photoshop", "Illustrator", "Pixel-perfect Integration"]
+		},
+		{
+			"area" : "User experience and methodologies",
+			"skills": ["Wire-frames", "User testing", "Annotated wire-franes", "Agile", "DIY", "Cow boy style", "Read the doc"]
+		},
+		{
+			"area": "Frameworks, Services and Libraries",
+			"skills": ["YUI", "jQuery", "NPM", "AWS", "Mocha", "GitHub", "Bitbucket", "Jira", "Backbone", "Node-webkit", "Bower", "Mozilla SDK", "Liferay", "Zend", "Jelix", "Wordpress", "Spring", "Express.js", "I can continue but, should I?"]
+		}
+	],
+	"experiences": [
+		{
+			"name": "Self Employed",
+			"startDate": "2003-01-01",
+			"employerProfile": "http://www.keinu.net",
+			"location": "Teh Internetz",
+			"position": "Full stack developer",
+			"description": "Experiments, hot projects, successes, mostly failures.",
+			"projects": [
+				{
+					"name": "This website",
+					"startDate": "2015-03-27",
+					"endDate": "2015-04-01",
+					"description": "Some fun with d3 (Visualisation JavaScript library), GitHub pages, Jekyll and other cool technologies.",
+					"link": "http://www.keinu.net",
+					"languages": [
+						"HTML", "JavaScript", "LESS", "Markdown", "SVG"
+					],
+					"tags": [
+						"Jekyll", "GitHub pages", "Twitter Bootstrap", "Markdown"
+					]
+				},
+				{
+					"name": "Higiezina (Defunct)",
+					"startDate": "2014-04-10",
+					"endDate": "2015-01-01",
+					"description": "Real estate service in Euskara based on KeystoneJS",
+					"link": "http://www.higiezina.com",
+					"languages": [
+						"HTML", "JavaScript", "LESS"
+					],
+					"tags": [
+						"Node.js", "KeystoneJs", "Twitter Bootstrap", "Jade", "ExpressJS"
+					]
+				},
+				{
+					"name": "Seaskaren lagunak",
+					"startDate": "2014-01-15",
+					"endDate": "2014-02-15",
+					"description": "Wordpress website about fundraising for Ikastola, the Basque Language immersive schools",
+					"link": "http://www.seaskarenlagunak.org",
+					"languages": [
+						"HTML", "JavaScript", "LESS", "PHP"
+					],
+					"tags": [
+						"LAMP", "Wordpress", "Twitter Bootstrap"
+					]
+				},
+				{
+					"name": "Top secret websites",
+					"startDate": "2003-01-15",
+					"endDate": "2009-09-12",
+					"description": "Web service design, UX, design, development, testing, refactoring, marketing, SEO. Some of them are defunct, some others still alive but I would have to kill your whole family if I tell you what they are.",
+					"link": "http://www.topsecret.com",
+					"languages": [
+						"HTML", "JavaScript", "LESS", "PHP"
+					],
+					"tags": [
+						"LAMP", "Wordpress", "Native JavaScript"
+					]
+				}
+			],
+			"duties": []
+		},
+		{
+			"name": "NSW Departement of Attorney General and Justice",
+			"startDate": "2013-03-22",
+			"employerProfile": "http://www.linkedin.com/company/department-of-justice-and-attorney-general?trk=prof-exp-company-name",
+			"location": "Sydney, Australia",
+			"position": "Senior Front End Developer",
+			"description": "Development of a range of public and private services for New Southe Wales Department of Justice",
+			"projects": [
+				{
+					"name" : "Jury Management System",
+					"startDate": "2013-03-22",
+					"endDate": "2014-06-30",
+					"description": "Development of a Jury Management System using modern front end and back end technologies. Responsive design web application development for desktop and tablet users. Front end design patterns and functionality framework implementation.",
+					"link": "http://juror.nsw.gov.au",
+					"languages": [
+						"HTML", "JavaScript", "Java", "LESS"
+					],
+					"tags": [
+						"Spring", "Javascript", "Bootstrap", "Handlebars"
+					]
+				},
+				{
+					"name" : "NSW Caselaw",
+					"startDate": "2014-07-01",
+					"endDate": "",
+					"description": "Development of a Decisions publishing platform using modern front end and back end technologies. Responsive design web application development for desktop and tablet users. Front end design patterns and functionality framework implementation.",
+					"link": "http://www.caselaw.nsw.gov.au",
+					"languages": [
+						"HTML", "JavaScript", "Java", "LESS"
+					],
+					"tags": [
+						"Spring", "Javascript", "Bootstrap", "Handlebars", "Mongo", "AWS", "CKeditor"
+					]
+				}
+			],
+			"duties": [
+			]
+		},
+		{
+			"name": "NSW Department of Education and Communities",
+			"startDate": "2009-07-06",
+			"endDate": "2013-03-21",
+			"employerProfile": "http://www.linkedin.com/company/nsw-department-of-education-and-communities?trk=prof-exp-company-name",
+			"location": "Sydney, Australia",
+			"position": "Senior Front End developer",
+			"description": "Enterprise CMS development",
+			"projects": [
+				{
+					"name": "School Website Service",
+					"startDate": "2009-07-06",
+					"endDate": "2011-03-23",
+					"description": "Enterprise grade CMS front-end development. Pixel-perfect theme integration, contribution to user experience requirements, front-end techniques advising and responsive design development.",
+					"link": "http://...",
+					"languages": [
+						"HTML", "JavaScript", "CSS", "JSP/JSTL"
+					],
+					"tags": [
+						"Liferay", "jQuery", "Teamsite"
+					]
+				},
+				{
+					"name": "Public Website Service",
+					"startDate": "2011-03-24",
+					"endDate": "2011-12-15",
+					"description": "Enterprise grade CMS front-end development. Pixel-perfect theme integration, contribution to user experience requirements, front-end techniques advising and responsive design development.",
+					"link": "http://...",
+					"languages": [
+						"HTML", "JavaScript", "CSS", "JSP/JSTL"
+					],
+					"tags": [
+						"Liferay", "jQuery"
+					]
+				},
+				{
+					"name": "School Website Service Mobile",
+					"startDate": "2012-10-01",
+					"endDate": "2013-03-22",
+					"description": "Enterprise grade CMS front-end development. Pixel-perfect theme integration, contribution to user experience requirements, front-end techniques advising and responsive design development.",
+					"link": "http://...",
+					"languages": [
+						"HTML", "JavaScript", "CSS", "JSP/JSTL", "LESS"
+					],
+					"tags": [
+						"Liferay", "jQuery", "Mobile"
+					]
+				},
+				{
+					"name": "School A-to-Z",
+					"startDate": "2011-12-15",
+					"endDate": "2012-05-15",
+					"description": "Enterprise grade CMS front-end development. Pixel-perfect theme integration, contribution to user experience requirements, front-end techniques advising and responsive design development.",
+					"link": "http://...",
+					"languages": [
+						"HTML", "JavaScript", "CSS", "JSP/JSTL", "LESS"
+					],
+					"tags": [
+						"Liferay", "jQuery"
+					]
+				}
+			],
+			"duties": [
+			]
+		},
+		{
+			"name": "Orange / France Telecom",
+			"startDate": "2008-03-01",
+			"endDate": "2009-04-30",
+			"employerProfile": "http://www.linkedin.com/company/orange?trk=prof-exp-company-name",
+			"location": "Toulouse, France",
+			"position": "Front-end developer",
+			"description": "Historical Telecom operator in France",
+			"projects": [
+				{
+					"name": "Zone Non Eligible (Satellite TV)",
+					"startDate": "2008-03-01",
+					"endDate": "2009-04-30",
+					"description": "Pure JavaScript application enbedded on a set top box for satellite TV",
+					"languages": [
+						"HTML", "JavaScript", "CSS"
+					],
+					"tags": [
+						"Galio Browser", "Samsung firmware"
+					]
+				}
+			],
+			"duties": [
+				"Full CSS3 and JavaScript development",
+				"Best practises teaching, code optimisation"
+			]
+		},
+		{
+			"name": "JFG Networks",
+			"startDate": "2006-08-01",
+			"endDate": "2008-01-31",
+			"employerProfile": "http://www.linkedin.com/company/overblog?trk=prof-exp-company-name",
+			"location": "Toulouse, France",
+			"position": "Web developer",
+			"description": "Major blog platform in France",
+			"projects": [
+				{
+					"name": "Over Blog v2",
+					"startDate": "2006-08-01",
+					"endDate": "2008-01-31",
+					"description": "Back-end and front-end development. Development of administration tools, domain name registration and payment processing scripts.",
+					"languages": [
+						"HTML", "JavaScript", "CSS", "PHP"
+					],
+					"tags": [
+						"Jelix", "YUI"
+					]
+				}
+			],
+			"duties": [
+				"Back-end and front-end development",
+				"Development of administration tools",
+				"Domain name registration and payment processing scripts"
+			]
+		},
+		{
+			"name": "Freescale Semiconductor",
+			"startDate": "2005-09-12",
+			"endDate": "2006-04-30",
+			"employerProfile": "http://www.linkedin.com/company/freescale-semiconductor?trk=prof-exp-company-name",
+			"location": "Toulouse, France",
+			"position": "Front End Developer",
+			"description": "Semiconductor company",
+			"projects": [
+				{
+					"name": "Careers website development",
+					"startDate": "2005-09-12",
+					"endDate": "2006-04-30",
+					"description": "Maintenance of the careers webpages",
+					"languages": [
+						"HTML", "JavaScript", "CSS"
+					],
+					"tags": [
+						"Teamsite"
+					]
+				}
+			],
+			"duties": [
+				"Update content pages and internal tools development",
+				"Banner design and integration",
+				"Development of career pages of the company's website"
+			]
+		},
+		{
+			"name": "Chubb Security",
+			"startDate": "2004-07-01",
+			"endDate": "2005-04-30",
+			"employerProfile": "http://www.linkedin.com/company/chubb-security_2?trk=prof-exp-company-name",
+			"location": "Pau, France",
+			"position": "Web developer",
+			"description": "Extranet development for VIP customers of security and alarm service company",
+			"projects": [
+				{
+					"name": "VIP customer extranet",
+					"startDate": "2004-07-01",
+					"endDate": "2005-04-30",
+					"description": "VIP customer extranet development",
+					"languages": [
+						"HTML", "JavaScript", "CSS", "ActionScript", "PHP"
+					],
+					"tags": [
+						"Flash"
+					]
+				}
+			],
+			"duties": [
+				"Schedule of conditions writing",
+				"Development of reporting tools, data visualisation tools",
+				"PDF document creation script"
+			]
+		},
+		{
+			"name": "Futurcom",
+			"startDate": "2003-01-01",
+			"endDate": "2003-01-31",
+			"employerProfile": "",
+			"location": "Paris, France",
+			"position": "Web developer",
+			"description": "Remote working for refactoring of a websites.",
+			"projects": [
+				{
+					"name": "Recette et Terroirs",
+					"startDate": "2003-01-01",
+					"endDate": "2003-01-31",
+					"description": "Development and maintenance of a gastronomical website",
+					"languages": [
+						"HTML", "JavaScript", "CSS", "PHP"
+					],
+					"tags": [
+						"Flash"
+					]
+				}
+			],
+			"duties": [
+				"Remote work",
+				"Code refactoring",
+				"New module development"
+			]
+		}
+	],
+	"education": [{
+			"startDate": "12-09-1979",
+			"endDate": "",
+			"name": "University of Life",
+			"location": "Planet Earth, The Mily Way",
+			"graduation": "Curiosity, open-mindness, tolearnce, creativity and thirst of learning",
+			"decription": "How things work, do it yourself attitude. And a in a more serious note: graphical tools, user interface design and programming languages learning."
+		},
+		{
+			"startDate": "01-06-2001",
+			"endDate": "01-06-2002",
+			"name": "Université de Pau et des pays de l'Adour",
+			"location": "Pau, France",
+			"gratuation": "Diplome universitaire Techniques du Multimedia <small>English language equivalence will vary</small>",
+			"decription": "Multimedia and web application programming, visual communication and design"
+		},
+		{
+			"startDate": "01-09-1998",
+			"endDate": "30-06-2000",
+			"name": "Lycée Saint Pierre",
+			"location": "Tarbes, France",
+			"graduation": "BTS Informatique Industrielle<small>English language equivalence will vary</small>",
+			"decription": "Software development and embedded software development in industrial environment. "
+		}
+	]
+}

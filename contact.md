@@ -55,3 +55,5 @@ permalink: /contact/
 		</div>
 	</div>
 </div>
+
+<script type="text/javascript" src="/js/contact.js"></script>
