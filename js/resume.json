@@ -37,7 +37,7 @@
 						"HTML", "JavaScript", "LESS", "Markdown", "SVG"
 					],
 					"tags": [
-						"Jekyll", "GitHub pages", "Twitter Bootstrap", "Markdown"
+						"Jekyll", "GitHub pages", "Bootstrap", "Markdown, Git, Illustrator"
 					]
 				},
 				{
@@ -50,7 +50,7 @@
 						"HTML", "JavaScript", "LESS"
 					],
 					"tags": [
-						"Node.js", "KeystoneJs", "Twitter Bootstrap", "Jade", "ExpressJS"
+						"Node.js", "KeystoneJs", "Bootstrap", "Jade", "ExpressJs, Git"
 					]
 				},
 				{
@@ -63,7 +63,7 @@
 						"HTML", "JavaScript", "LESS", "PHP"
 					],
 					"tags": [
-						"LAMP", "Wordpress", "Twitter Bootstrap"
+						"LAMP", "WordPress", "Bootstrap, Git"
 					]
 				},
 				{
@@ -76,7 +76,7 @@
 						"HTML", "JavaScript", "LESS", "PHP"
 					],
 					"tags": [
-						"LAMP", "Wordpress", "Native JavaScript"
+						"LAMP", "WordPress", "Native JavaScript"
 					]
 				}
 			],
@@ -100,7 +100,7 @@
 						"HTML", "JavaScript", "Java", "LESS"
 					],
 					"tags": [
-						"Spring", "Javascript", "Bootstrap", "Handlebars"
+						"Spring", "JavaScript", "Bootstrap", "Handlebars, Git, Jira"
 					]
 				},
 				{
@@ -113,7 +113,7 @@
 						"HTML", "JavaScript", "Java", "LESS"
 					],
 					"tags": [
-						"Spring", "Javascript", "Bootstrap", "Handlebars", "Mongo", "AWS", "CKeditor"
+						"Spring", "JavaScript", "Bootstrap", "Handlebars", "Mongo", "AWS", "CKEditor, Git, Jira"
 					]
 				}
 			],
@@ -134,12 +134,11 @@
 					"startDate": "2009-07-06",
 					"endDate": "2011-03-23",
 					"description": "Enterprise grade CMS front-end development. Pixel-perfect theme integration, contribution to user experience requirements, front-end techniques advising and responsive design development.",
-					"link": "http://...",
 					"languages": [
 						"HTML", "JavaScript", "CSS", "JSP/JSTL"
 					],
 					"tags": [
-						"Liferay", "jQuery", "Teamsite"
+						"Liferay", "jQuery", "Teamsite, SVN"
 					]
 				},
 				{
@@ -147,9 +146,8 @@
 					"startDate": "2011-03-24",
 					"endDate": "2011-12-15",
 					"description": "Enterprise grade CMS front-end development. Pixel-perfect theme integration, contribution to user experience requirements, front-end techniques advising and responsive design development.",
-					"link": "http://...",
 					"languages": [
-						"HTML", "JavaScript", "CSS", "JSP/JSTL"
+						"HTML", "JavaScript", "CSS", "JSP/JSTL, SVN"
 					],
 					"tags": [
 						"Liferay", "jQuery"
@@ -160,9 +158,8 @@
 					"startDate": "2012-10-01",
 					"endDate": "2013-03-22",
 					"description": "Enterprise grade CMS front-end development. Pixel-perfect theme integration, contribution to user experience requirements, front-end techniques advising and responsive design development.",
-					"link": "http://...",
 					"languages": [
-						"HTML", "JavaScript", "CSS", "JSP/JSTL", "LESS"
+						"HTML", "JavaScript", "CSS", "JSP/JSTL", "LESS, SVN"
 					],
 					"tags": [
 						"Liferay", "jQuery", "Mobile"
@@ -173,9 +170,9 @@
 					"startDate": "2011-12-15",
 					"endDate": "2012-05-15",
 					"description": "Enterprise grade CMS front-end development. Pixel-perfect theme integration, contribution to user experience requirements, front-end techniques advising and responsive design development.",
-					"link": "http://...",
+					"link": "http://www.schoolatoz.nsw.edu.au/",
 					"languages": [
-						"HTML", "JavaScript", "CSS", "JSP/JSTL", "LESS"
+						"HTML", "JavaScript", "CSS", "JSP/JSTL", "LESS, SVN"
 					],
 					"tags": [
 						"Liferay", "jQuery"
@@ -203,7 +200,7 @@
 						"HTML", "JavaScript", "CSS"
 					],
 					"tags": [
-						"Galio Browser", "Samsung firmware"
+						"Galio Browser", "Samsung firmware, SVN"
 					]
 				}
 			],
@@ -230,7 +227,7 @@
 						"HTML", "JavaScript", "CSS", "PHP"
 					],
 					"tags": [
-						"Jelix", "YUI"
+						"Jelix", "YUI, SVN"
 					]
 				}
 			],
@@ -258,7 +255,7 @@
 						"HTML", "JavaScript", "CSS"
 					],
 					"tags": [
-						"Teamsite"
+						"Teamsite, Photoshop, Illustrator"
 					]
 				}
 			],
@@ -286,14 +283,14 @@
 						"HTML", "JavaScript", "CSS", "ActionScript", "PHP"
 					],
 					"tags": [
-						"Flash"
+						"Flash, Photoshop, Illustrator"
 					]
 				}
 			],
 			"duties": [
 				"Schedule of conditions writing",
 				"Development of reporting tools, data visualisation tools",
-				"PDF document creation script"
+				"PDF document creation service"
 			]
 		},
 		{
@@ -314,7 +311,7 @@
 						"HTML", "JavaScript", "CSS", "PHP"
 					],
 					"tags": [
-						"Flash"
+						"Flash, Photoshop, Illustrator"
 					]
 				}
 			],

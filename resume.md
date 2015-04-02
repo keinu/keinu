@@ -17,7 +17,7 @@ permalink: /resume/
 
 			<p class="lead">
 				A standard formatted résumé is boring and rather difficult to read and analyse. <br />
-				Instead, I thought of having my resume in a JSON format. Allowing me to manipulate it and display the data in a meaninful way. For instance:
+				Instead, I thought of having <a href="js/resume.json">my resume in JSON format</A>. Allowing me to manipulate it and display the data in a meaninful way. For instance:
 			</p>
 
 			<h3>Days of experience per language:</h3>
