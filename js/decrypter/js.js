@@ -17,7 +17,6 @@
 
 	var xhr = new XMLHttpRequest();
 		xhr.open('GET', GALLERIES_API + galleryId, true);
-		xhr.setRequestHeader("Origin", "127.0.0.1:4000");
 		xhr.responseType = 'json';
 
 	xhr.onload = function() {
