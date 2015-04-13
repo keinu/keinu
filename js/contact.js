@@ -5,51 +5,51 @@
 
 	"use strict";
 
-	$(document).on("submit", "form", function(e) {
+	var CONTACT_API = "http://www.mukuzu.com/contact/send";
+
+	$(document).on("submit", "form[name='contact']", function(e) {
 
 		e.preventDefault();
 
-		$("form .help-block").html("");
-		var btn = $(this).find("button").html('loading');
+		$(this).find(".help-block").html("");
+		var btn = $(this).find("button");
+		var form = this;
 
 		$.ajax({
 
 			method: "POST",
-			data: $("form").serialize(),
-			url: "http://www.janveu.com/do.php",
-			dataType: "jsonp"
+			data: $(this).serialize(),
+			url: CONTACT_API,
+			dataType: "json"
 
-		}).done(function(data) {
+		}).done(function() {
 
-			btn.html('reset');
+			$(form).find(" > .lead").html("Thank you " + $(form).find("[name='name']").val() + ", <br />I'll get back to you.<br />");
+			$(form).find(".form-group").hide();
 
-			if (data.status === "success") {
+		}).fail(function(data) {
 
-				$("form > .lead").html("Thank you! <br />I'll get back to you.");
-				$("form .form-group").hide();
-
-			} else {
-
-				if(data.email) {
-					$("form [name='email'] + .help-block").html(data.email);
-					$("form [name='email']").parent(".form-group").addClass("has-error");
-				}
-
-				if(data.name) {
-					$("form [name='name'] + .help-block").html(data.name);
-					$("form [name='name']").parent(".form-group").addClass("has-error");
-				}
-
-				if(data.message) {
-					$("form [name='message'] + .help-block").html(data.message);
-					$("form [name='message']").parent(".form-group").addClass("has-error");
-				}
-
+			var response = data.responseJSON.validation;
+			if (response.keys[0] === "email") {
+				$(form).find("[name='email'] + .help-block").html("Check your email");
+				$(form).find("[name='email']").parent(".form-group").addClass("has-error");
 			}
+
+			if (response.keys[0] === "name") {
+				$(form).find("[name='name'] + .help-block").html("Check your name");
+				$(form).find("[name='name']").parent(".form-group").addClass("has-error");
+			}
+
+			if (response.keys[0] === "message") {
+				$(form).find("[name='message'] + .help-block").html("Check your message");
+				$(form).find("[name='message']").parent(".form-group").addClass("has-error");
+			}
+
+			btn.html("Send");
 
 		});
 
-		$("form button").html("Sending...");
+		$(this).find("button").html("Sending...");
 
 	});
 

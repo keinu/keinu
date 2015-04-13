@@ -5,7 +5,7 @@
 
 	"use strict";
 
-	if ($("body").hasClass("home")) {
+	if ($("body").is("#home")) {
 
 		var top = $("#splash-wrapper").position().top,
 			height = 150,
@@ -28,7 +28,7 @@
 
 		$(document).on("click", ".scroll-hint", function(){
 			$('html, body').animate({
-				scrollTop: 500
+				scrollTop: 540
 			}, 2000);
 		});
 

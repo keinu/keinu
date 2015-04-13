@@ -7,7 +7,7 @@
 
 	"use strict";
 
-	if (!$("body").hasClass("resume")) {
+	if (!$("body").is("#resume")) {
 		return false;
 	}
 
@@ -297,17 +297,14 @@
 
 	};
 
-	window.onload = function() {
+	applyHighlights();
 
-		// Make sure everything is loaded
-		applyHighlights();
+	$.getJSON("/js/resume.json").done(function(resume) {
+		resume = dataStructurer(resume);
+		drawTimeline(resume);
+		drowDonuts(resume);
+  	});
 
-		$.getJSON("/js/resume.json").done(function(resume) {
-			resume = dataStructurer(resume);
-			drawTimeline(resume);
-			drowDonuts(resume);
-	  	});
-	};
 
 })();
 

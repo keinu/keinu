@@ -1,0 +1,95 @@
+---
+layout: default
+title: Sandpit
+class: decrypter
+permalink: /sandpit/decrypter.html
+---
+
+<div class="container">
+
+	<div class="row">
+
+		<div class="col-md-3 titles">
+			<h2>Decrypter</h2>
+		</div>
+
+		<div class="col-md-8 contents">
+
+			<p class="lead">
+				Derypts already loaded images containing a preview and the encrypted image in one file.
+			</p>
+
+		</div>
+
+	</div>
+
+	<div class="row">
+
+		<div class="col-md-3 titles">
+			<button type="button" class="btn" id="decrypt">
+				Decrypt images
+			</button>
+		</div>
+
+		<div class="col-md-8">
+
+			<div class="images">
+
+			</div>
+
+		</div>
+
+	</div>
+
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="text-center">
+
+				<h1>To decrypt images</h1>
+
+				<div class="content">
+					<p>
+						Get the key code and decrypt images
+					</p>
+
+					<button class="btn" id="getKey">Get key and decrypt!</button>
+
+					<h2>Or</h2>
+
+					<p>Consider a bitcoin donation to decrypt the image, any amount works.</p>
+					<p>The decryption will start as soon as the transaction is propagated to the network</p>
+
+					<div id="qrcode">
+						<div id="qrcodecontent"></div>
+					</div>
+
+					<a class="paymentlink" href="#"></a>
+
+				</div>
+
+				<div class="buttons">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Got it, now let me alone</button>
+				</div>
+
+			</div>
+
+		</div>
+	</div>
+</div>
+
+<script src="//crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/aes.js"></script>
+<script src="//crypto-js.googlecode.com/svn/tags/3.1.2/build/components/enc-base64-min.js"></script>
+<script src="//code.jquery.com/jquery-2.1.3.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/async/0.9.0/async.js"></script>
+<script src="//rawgit.com/keinu/loada/master/loada.js?ts=4"></script>
+
+<script src="/js/decrypter/decrypter.js"></script>
+<script src="/js/decrypter/keyring.js"></script>
+<script src="/js/decrypter/qrcode.min.js"></script>
+<script src="/js/decrypter/js.js"></script>

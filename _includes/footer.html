@@ -1,34 +1,41 @@
 <footer>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6">
-        <p>
-          Original theme created by Xabi Errotabehere, all content is for you to use from
-          <a href="{{ site.baseurl }}">{{ site.title }}</a> no-&copy; 2014 &bull; No right reserved.
-        </p>
-      </div>
-      <div class="col-md-6">
-        <ul class="list-inline pull-right">
-          <li>
-            <a href="https://twitter.com/xabs" title="follow me on Twitter" target="_blank">
-              <img src="{{ '/images/twitter.png' | prepend: site.baseurl }}" />
-            </a>
-          </li>
-          <li>
-            <a href="http://au.linkedin.com/in/keinu/" title="My LinkedIn profile" target="_blank">
-              <img src="{{ '/images/linkedin.png' | prepend: site.baseurl }}" alt="follow me on Twitter" />
-            </a>
-          </li>
-          <li>
-            <a href="https://github.com/keinu/" title="My GitHub page" target="_blank">
-              <img src="{{ '/images/github.png' | prepend: site.baseurl }}" />
-            </a>
-          </li>
-        </ul>
+
+  {% include contact.html %}
+
+  <div id="footerbarwrapper">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <p>
+            Original theme created by Xabi Errotabehere, all content is for you to use from
+            <a href="{{ site.baseurl }}">{{ site.title }}</a> no-&copy; 2014 &bull; No right reserved.
+          </p>
+        </div>
+        <div class="col-md-6">
+          <ul class="list-inline pull-right">
+            <li>
+              <a href="https://twitter.com/xabs" title="follow me on Twitter" target="_blank">
+                <img src="{{ '/images/twitter.png' | prepend: site.baseurl }}" />
+              </a>
+            </li>
+            <li>
+              <a href="http://au.linkedin.com/in/keinu/" title="My LinkedIn profile" target="_blank">
+                <img src="{{ '/images/linkedin.png' | prepend: site.baseurl }}" alt="follow me on Twitter" />
+              </a>
+            </li>
+            <li>
+              <a href="https://github.com/keinu/" title="My GitHub page" target="_blank">
+                <img src="{{ '/images/github.png' | prepend: site.baseurl }}" />
+              </a>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
+
 </footer>
+
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
