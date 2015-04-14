@@ -8,8 +8,7 @@
 
 	"use strict";
 
-	var galleryId = 1;
-	var clientId = Math.random().toString(36).slice(2);
+	var galleryId = 1, clientId;
 	var GALLERIES_API = "http://www.mukuzu.com/gallery/";
 	var PAYMENTS_API = "http://www.mukuzu.com/payment/";
 	var GALLERIES_PUBLIC_PATH = "http://www.mukuzu.com";
@@ -32,13 +31,13 @@
 
 			imaagesPlaceholder.appendChild(img);
 
-			decrypter = new Decrypter(".images img");
+		}
 
-			var key = keyRing.getGalleryKey(galleryId);
-			if (key) {
-				decrypter.decrypt(key);
-			}
+		decrypter = new Decrypter(".images img");
 
+		var key = keyRing.getGalleryKey(galleryId);
+		if (key) {
+			decrypter.decrypt(key);
 		}
 
 	};
@@ -111,19 +110,10 @@
 
 	});
 
-	var ws = new WebSocket("ws://www.mukuzu.com:80/" + clientId);
-	ws.onmessage = function (evt) {
-
-		var response = JSON.parse(evt.data);
-
-		decrypter.decrypt(response.key);
-		decrypter.on("decrypt", function(e) {
-			keyRing.add(e.detail.key);
-		});
-
-		$('#myModal').modal('hide');
-	};
-
+	var socket = io.connect("//www.mukuzu.com:8080");
+	socket.on('message', function(msg) {
+		clientId = msg.clientId;
+	});
 
 	setInterval(function() {
 
