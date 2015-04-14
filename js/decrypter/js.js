@@ -111,7 +111,7 @@
 
 	});
 
-	var ws = new WebSocket("ws://www.mukuzu.com:8000/" + clientId);
+	var ws = new WebSocket("ws://www.mukuzu.com:80/" + clientId);
 	ws.onmessage = function (evt) {
 
 		var response = JSON.parse(evt.data);
