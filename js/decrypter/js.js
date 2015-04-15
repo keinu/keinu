@@ -133,6 +133,6 @@
 	socket.on('message', function(msg) {
 		clientId = msg.clientId;
 	});
-	} catch() {};
+	} catch(e) {};
 
 })();
