@@ -71,7 +71,7 @@ var Decrypter = function(selector, options) {
 			return decryptedHex;
 		}
 
-		console.err("Cannot decrypt image with", key);
+		console.error("Cannot decrypt image with", key);
 		return false;
 
 	};
