@@ -9,8 +9,10 @@
 	"use strict";
 
 	var galleryId = 1, clientId;
+
 	var GALLERIES_API = "http://www.mukuzu.com/gallery/";
 	var PAYMENTS_API = "http://www.mukuzu.com/payment/";
+	var PAYMENTS_SOCKET_URL = "//www.mukuzu.com";
 	var GALLERIES_PUBLIC_PATH = "http://www.mukuzu.com";
 	var decrypter;
 
@@ -110,7 +112,7 @@
 
 	});
 
-	var socket = io.connect("//www.mukuzu.com:8080");
+	var socket = io.connect(PAYMENTS_SOCKET_URL);
 	socket.on('message', function(msg) {
 		clientId = msg.clientId;
 	});
