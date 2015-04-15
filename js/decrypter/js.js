@@ -112,11 +112,6 @@
 
 	});
 
-	var socket = io.connect(PAYMENTS_SOCKET_URL);
-	socket.on('message', function(msg) {
-		clientId = msg.clientId;
-	});
-
 	setInterval(function() {
 
 		var key = keyRing.getGalleryKey(galleryId);
@@ -132,5 +127,12 @@
 		loada.go(percent);
 
 	}, 100);
+
+	try {
+	var socket = io.connect(PAYMENTS_SOCKET_URL);
+	socket.on('message', function(msg) {
+		clientId = msg.clientId;
+	});
+	} catch() {};
 
 })();
