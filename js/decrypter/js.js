@@ -8,7 +8,7 @@
 
 	"use strict";
 
-	var galleryId = 1, clientId;
+	var galleryId = "1", clientId;
 
 	var GALLERIES_API = "http://www.mukuzu.com/gallery/";
 	var PAYMENTS_API = "http://www.mukuzu.com/payment/";
