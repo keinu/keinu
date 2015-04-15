@@ -130,9 +130,20 @@
 
 	try {
 	var socket = io.connect(PAYMENTS_SOCKET_URL);
-	socket.on('message', function(msg) {
+	socket.on('client', function(msg) {
 		clientId = msg.clientId;
+		console.log("client is %s", clientId);
 	});
+	socket.on('key', function(key) {
+		console.log("got", key);
+		decrypter.decrypt(key.key);
+		decrypter.on("decrypt", function(e) {
+			keyRing.add(e.detail.key);
+		});
+		$('#myModal').modal('hide');
+	});
+		
+
 	} catch(e) {};
 
 })();
