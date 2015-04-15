@@ -128,7 +128,7 @@
 
 	}, 100);
 
-	try {
+	
 	var socket = io.connect(PAYMENTS_SOCKET_URL);
 	socket.on('client', function(msg) {
 		clientId = msg.clientId;
@@ -142,8 +142,5 @@
 		});
 		$('#myModal').modal('hide');
 	});
-		
-
-	} catch(e) {};
-
+	
 })();
