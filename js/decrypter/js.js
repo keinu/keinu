@@ -1,5 +1,6 @@
 /* global $ */
 /* global QRCode */
+/* global io */
 /* global loada */
 /* global Decrypter */
 /* global keyRing */
@@ -46,7 +47,7 @@
 
 	xhr.send();
 
-	var getPaymentInfo = function () {
+	var getPaymentInfo = function (clientId) {
 
 		$("#qrcode").addClass("loading");
 
@@ -79,6 +80,49 @@
 
 	};
 
+	var connectSocket = function() {
+
+
+		socket.on("error", function(){
+			$("#qrcode").html("<p class='lead'>WebSockets do not seems to be working on your browser or network</p>");
+		});
+
+	};
+
+	var connector = (function() {
+
+		var clientId, socket;
+
+		var getClientId = function(callback) {
+
+			if (clientId) {
+				callback(clientId);
+				return;
+			}
+
+			socket = io.connect(PAYMENTS_SOCKET_URL);
+			socket.on('client', function(client) {
+				clientId = client.clientId;
+				callback(client.clientId);
+				console.log("client is %s", client.clientId);
+			});
+
+		};
+
+		var on = function(event, callback) {
+
+			socket.on(event, callback);
+
+		};
+
+		return {
+			getClientId: getClientId,
+			on: on
+		};
+
+	})();
+
+
 	$('#getKey').on("click", function(e) {
 
 		e.preventDefault();
@@ -108,7 +152,17 @@
 		$("#key").html("");
 		$('#myModal').modal();
 
-		getPaymentInfo();
+		connector.getClientId(function(clientId) {
+			getPaymentInfo(clientId);
+		});
+
+		connector.on("key", function(key) {
+			decrypter.decrypt(key.key);
+			decrypter.on("decrypt", function(e) {
+				keyRing.add(e.detail.key);
+			});
+			$('#myModal').modal('hide');
+		});
 
 	});
 
@@ -128,19 +182,5 @@
 
 	}, 100);
 
-	
-	var socket = io.connect(PAYMENTS_SOCKET_URL);
-	socket.on('client', function(msg) {
-		clientId = msg.clientId;
-		console.log("client is %s", clientId);
-	});
-	socket.on('key', function(key) {
-		console.log("got", key);
-		decrypter.decrypt(key.key);
-		decrypter.on("decrypt", function(e) {
-			keyRing.add(e.detail.key);
-		});
-		$('#myModal').modal('hide');
-	});
-	
+
 })();
