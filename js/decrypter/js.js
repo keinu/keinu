@@ -115,6 +115,12 @@
 
 		};
 
+		window.addEventListener("beforeunload", function () {
+			if (socket) {
+				socket.disconnect();
+			}
+		});
+
 
 		return {
 			getClientId: getClientId,
