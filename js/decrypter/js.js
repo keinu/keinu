@@ -116,6 +116,7 @@
 		};
 
 		window.addEventListener("beforeunload", function () {
+			console.log(socket);
 			if (socket) {
 				socket.disconnect();
 			}
