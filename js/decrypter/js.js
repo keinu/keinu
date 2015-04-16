@@ -115,14 +115,6 @@
 
 		};
 
-		window.addEventListener("beforeunload", function () {
-			console.log(socket);
-			if (socket) {
-				socket.disconnect();
-			}
-		});
-
-
 		return {
 			getClientId: getClientId,
 			on: on
