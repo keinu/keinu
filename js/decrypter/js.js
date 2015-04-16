@@ -100,7 +100,7 @@
 				return;
 			}
 
-			socket = io.connect(PAYMENTS_SOCKET_URL);
+			socket = io.connect(PAYMENTS_SOCKET_URL, {'sync disconnect on unload': true} );
 			socket.on('client', function(client) {
 				clientId = client.clientId;
 				callback(client.clientId);
@@ -114,6 +114,7 @@
 			socket.on(event, callback);
 
 		};
+
 
 		return {
 			getClientId: getClientId,
