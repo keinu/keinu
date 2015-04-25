@@ -9,7 +9,7 @@
 
 	"use strict";
 
-	var galleryId = "1", clientId;
+	var galleryId = "1";
 
 	var GALLERIES_API = "http://www.mukuzu.com/gallery/";
 	var PAYMENTS_API = "http://www.mukuzu.com/payment/";
@@ -18,8 +18,8 @@
 	var decrypter;
 
 	var xhr = new XMLHttpRequest();
-		xhr.open('GET', GALLERIES_API + galleryId, true);
-		xhr.responseType = 'json';
+		xhr.open("GET", GALLERIES_API + galleryId, true);
+		xhr.responseType = "json";
 
 	xhr.onload = function() {
 
@@ -52,8 +52,8 @@
 		$("#qrcode").addClass("loading");
 
 		var xhr = new XMLHttpRequest();
-			xhr.open('GET', PAYMENTS_API  + "generate/" + galleryId + "/" + clientId, true);
-			xhr.responseType = 'json';
+			xhr.open("GET", PAYMENTS_API  + "generate/" + galleryId + "/" + clientId, true);
+			xhr.responseType = "json";
 
 		xhr.onload = function() {
 
@@ -80,15 +80,6 @@
 
 	};
 
-	var connectSocket = function() {
-
-
-		socket.on("error", function(){
-			$("#qrcode").html("<p class='lead'>WebSockets do not seems to be working on your browser or network</p>");
-		});
-
-	};
-
 	var connector = (function() {
 
 		var clientId, socket;
@@ -100,11 +91,16 @@
 				return;
 			}
 
-			socket = io.connect(PAYMENTS_SOCKET_URL, {'sync disconnect on unload': true} );
-			socket.on('client', function(client) {
+			var socket = io.connect(PAYMENTS_SOCKET_URL, {"sync disconnect on unload": true} );
+
+			socket.on("client", function(client) {
 				clientId = client.clientId;
 				callback(client.clientId);
 				console.log("client is %s", client.clientId);
+			});
+
+			socket.on("error", function(){
+				$("#qrcode").html("<p class='lead'>WebSockets do not seems to be working on your browser or network</p>");
 			});
 
 		};
@@ -123,13 +119,13 @@
 	})();
 
 
-	$('#getKey').on("click", function(e) {
+	$("#getKey").on("click", function(e) {
 
 		e.preventDefault();
 
 		var xhr = new XMLHttpRequest();
-			xhr.open('GET', GALLERIES_API + galleryId + "/key", true);
-			xhr.responseType = 'json';
+			xhr.open("GET", GALLERIES_API + galleryId + "/key", true);
+			xhr.responseType = "json";
 
 		xhr.onload = function() {
 
@@ -142,7 +138,7 @@
 		};
 
 		xhr.send();
-		$('#myModal').modal('hide');
+		$("#myModal").modal("hide");
 
 	});
 
@@ -150,7 +146,7 @@
 
 		$("#qrcodecontent").html("");
 		$("#key").html("");
-		$('#myModal').modal();
+		$("#myModal").modal();
 
 		connector.getClientId(function(clientId) {
 			getPaymentInfo(clientId);
@@ -161,7 +157,7 @@
 			decrypter.on("decrypt", function(e) {
 				keyRing.add(e.detail.key);
 			});
-			$('#myModal').modal('hide');
+			$("#myModal").modal("hide");
 		});
 
 	});
@@ -170,6 +166,8 @@
 
 		var key = keyRing.getGalleryKey(galleryId);
 		if (!key) {
+			console.log(key);
+			console.log("will hide");
 			loada.hide();
 			return false;
 		}
@@ -181,6 +179,5 @@
 		loada.go(percent);
 
 	}, 100);
-
 
 })();

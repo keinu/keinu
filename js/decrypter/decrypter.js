@@ -56,7 +56,7 @@ var Decrypter = function(selector, options) {
 
 		// read the image and look for the seaprator
 		var splitted = data.split(SEPARATOR);
-		if (splitted.length == 2) {
+		if (splitted.length === 2) {
 			data = splitted[1];
 		}
 		// otherwise consider the image as fully encrypted
@@ -123,7 +123,7 @@ var Decrypter = function(selector, options) {
 
 		};
 
-		async.mapSeries(images, decrypter, function(err, callback) {
+		async.mapSeries(images, decrypter, function(err) {
 
 			if (err) {
 				console.log("Error decrypting");
@@ -131,18 +131,30 @@ var Decrypter = function(selector, options) {
 			}
 
 			var now = (new Date()).getTime();
-			if (key.expires > now) {
-				console.log("Decrypted, expires in %d seconds", (key.expires - now) / 1000);
-				setTimeout(function() {
-					revert();
-					console.log("Reverted");
-				}, key.expires - now);
-			}
 
-			var event = new CustomEvent('decrypt', {
+			console.log("Decrypted, expires in %d seconds", (key.expires - now) / 1000);
+
+			setTimeout(function() {
+				revert();
+				console.log("Reverted");
+			}, key.expires - now);
+
+
+			// Failsafe, set timeout not trigered when page is out of focus
+			window.addEventListener("focus", function() {
+				now = (new Date()).getTime();
+				console.log(new Date(key.expires));
+				console.log(new Date(now));
+				if (hasExpired(key)) {
+					revert();
+					console.log("Reverted onfocus");
+				}
+			});
+
+			var event = new CustomEvent("decrypt", {
 				"detail" : {
-					'key': key,
-					'images': images
+					"key": key,
+					"images": images
 				}
 			});
 
@@ -183,20 +195,34 @@ var Decrypter = function(selector, options) {
 	// save the origin and replace it with a placeholder
 	var intitialise = function() {
 
+		var addPlaceHolder = function(image) {
+
+			if (!options.placeholder) {
+				console.error("Placeholder image path option is not set");
+				return;
+			}
+			image.dataset.originSrc = image.getAttribute("src");
+			image.setAttribute("src", options.placeholder);
+
+		};
+
 		var i = 0;
 		while (images[i]) {
 			var image = images[i++];
 			var probe = document.createElement("img");
-			probe.onerror = function(image) {
-				if (!options.placeholder) {
-					console.error("Placeholder image path option is not set");
-					return;
-				}
-				image.dataset.originSrc = image.getAttribute("src");
-				image.setAttribute("src", options.placeholder);
-			};
+			probe.onerror = addPlaceHolder;
 			probe.setAttribute("src", image.getAttribute("src"));
 		}
+
+	};
+
+	var hasExpired = function(key) {
+
+		var now = (new Date()).getTime();
+		if (key.expires > now) {
+			return false;
+		}
+		return true;
 
 	};
 
