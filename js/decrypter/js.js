@@ -39,9 +39,20 @@
 		decrypter = new Decrypter(".images img");
 
 		var key = keyRing.getGalleryKey(galleryId);
-		if (key) {
-			decrypter.decrypt(key);
+		if (!key) {
+			loada.hide();
+			return false;
 		}
+
+		console.log(key);
+
+		decrypter.decrypt(key);
+
+		var remaining = key.expires - (new Date()).getTime();
+		loada.linearProgress(key.validity, remaining, function() {
+			loada.hide();
+			decrypter.revert();
+		});
 
 	};
 
@@ -80,6 +91,23 @@
 
 	};
 
+	var consumeKey = function(key) {
+
+		key = keyRing.setExpiry(key);
+
+		var remaining = key.expires - (new Date()).getTime();
+		loada.linearProgress(key.validity, remaining, function() {
+			loada.hide();
+			decrypter.revert();
+		});
+
+		decrypter.decrypt(key);
+		decrypter.on("decrypt", function(e) {
+			keyRing.add(e.detail.key);
+		});
+
+	};
+
 	var connector = (function() {
 
 		var clientId, socket;
@@ -91,7 +119,7 @@
 				return;
 			}
 
-			var socket = io.connect(PAYMENTS_SOCKET_URL, {"sync disconnect on unload": true} );
+			socket = io.connect(PAYMENTS_SOCKET_URL, {"sync disconnect on unload": true} );
 
 			socket.on("client", function(client) {
 				clientId = client.clientId;
@@ -129,11 +157,7 @@
 
 		xhr.onload = function() {
 
-			console.log("got key", this.response);
-			decrypter.decrypt(this.response);
-			decrypter.on("decrypt", function(e) {
-				keyRing.add(e.detail.key);
-			});
+			consumeKey(this.response);
 
 		};
 
@@ -149,35 +173,18 @@
 		$("#myModal").modal();
 
 		connector.getClientId(function(clientId) {
+
 			getPaymentInfo(clientId);
+
 		});
 
-		connector.on("key", function(key) {
-			decrypter.decrypt(key.key);
-			decrypter.on("decrypt", function(e) {
-				keyRing.add(e.detail.key);
-			});
+		connector.on("key", function(data) {
+
+			consumeKey(data.key);
 			$("#myModal").modal("hide");
+
 		});
 
 	});
-
-	setInterval(function() {
-
-		var key = keyRing.getGalleryKey(galleryId);
-		if (!key) {
-			console.log(key);
-			console.log("will hide");
-			loada.hide();
-			return false;
-		}
-
-		var remaining = key.expires - (new Date()).getTime();
-		var percent = 100 - (remaining / key.validity * 100);
-			percent = percent.toFixed(4);
-
-		loada.go(percent);
-
-	}, 100);
 
 })();

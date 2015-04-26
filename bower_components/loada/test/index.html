@@ -1,0 +1,72 @@
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Test</title>
+  <link href="http://fonts.googleapis.com/css?family=Raleway:400,700" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="http://www.keinu.net/css/css.css">
+  <link rel="stylesheet" href="../css.css">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  <body>
+
+    <div id="wrapper">
+
+			<div class="container">
+
+				<div class="row">
+
+					<div class="col-md-3 titles">
+						<h2>Loada</h2>
+					</div>
+
+					<div class="col-md-8 contents">
+						<p class="lead">
+							Displays a progress line on the top of the page, <a href="https://github.com/keinu/loada" target="_blank">View source</a>
+						</p>
+					</div>
+
+				</div>
+
+				<div class="row">
+
+					<div class="col-md-8 col-md-offset-3">
+						<p>
+							Using following links will adjust the progress bar on the top of the page:<br>
+						</p>
+						<form>
+							<button href="#" class="btn btn-default" onclick="loada.go(10)" type="button">10%</button>
+							<button href="#" class="btn btn-default" onclick="loada.go(50)" type="button">50%</button>
+							<button href="#" class="btn btn-default" onclick="loada.go(90)" type="button">90%</button>
+						</form>
+					</div>
+
+				</div>
+
+			</div>
+		</div>
+	</body>
+
+	<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+	<script src="../loada.js"></script>
+
+	<script type="Text/javascript">
+
+	// 1 min total
+	// 30 sec remaining
+	loada.linearProgress(1000 * 60 * 1, 1000 * 15, function(){
+
+		console.log("done");
+
+	});
+
+
+	</script>
+
+</html>

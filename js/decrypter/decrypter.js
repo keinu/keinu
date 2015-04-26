@@ -37,10 +37,10 @@ var Decrypter = function(selector, options) {
 	var getRemoteFile = function(src, callback) {
 
 		var xhr = new XMLHttpRequest();
-		xhr.open('GET', src, true);
-		xhr.responseType = 'arraybuffer';
+		xhr.open("GET", src, true);
+		xhr.responseType = "arraybuffer";
 
-		xhr.onload = function(e) {
+		xhr.onload = function() {
 			callback(arrayBufferToBase64(this.response));
 		};
 
@@ -130,27 +130,6 @@ var Decrypter = function(selector, options) {
 				return;
 			}
 
-			var now = (new Date()).getTime();
-
-			console.log("Decrypted, expires in %d seconds", (key.expires - now) / 1000);
-
-			setTimeout(function() {
-				revert();
-				console.log("Reverted");
-			}, key.expires - now);
-
-
-			// Failsafe, set timeout not trigered when page is out of focus
-			window.addEventListener("focus", function() {
-				now = (new Date()).getTime();
-				console.log(new Date(key.expires));
-				console.log(new Date(now));
-				if (hasExpired(key)) {
-					revert();
-					console.log("Reverted onfocus");
-				}
-			});
-
 			var event = new CustomEvent("decrypt", {
 				"detail" : {
 					"key": key,
@@ -160,6 +139,22 @@ var Decrypter = function(selector, options) {
 
 			// Dispatch the event.
 			document.dispatchEvent(event);
+
+			var now = (new Date()).getTime();
+			setTimeout(function() {
+				revert();
+				console.log("Reverted");
+			}, key.expires - now);
+			console.log("Valid key, expires in %d seconds", (key.expires - now) / 1000);
+
+
+			// Failsafe, set timeout not trigered when page is out of focus
+			window.addEventListener("focus", function() {
+				if (hasExpired(key)) {
+					revert();
+					console.log("Reverted onfocus");
+				}
+			});
 
 		});
 
