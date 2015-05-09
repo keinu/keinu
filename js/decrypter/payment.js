@@ -31,7 +31,6 @@ var payment = (function() {
 
 			};
 
-
 			xhr.send();
 
 		});
@@ -43,7 +42,8 @@ var payment = (function() {
     	return new Promise(function (resolve, reject) {
 
 			if (clientId) {
-				return resolve(clientId);
+				resolve(clientId);
+				return;
 			}
 
 			socket = io.connect(PAYMENTS_SOCKET_URL, {"sync disconnect on unload": true} );

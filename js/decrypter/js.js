@@ -116,12 +116,9 @@
 
 		$("#qrcode").addClass("loading");
 
-		payment.getClientId(function(clientId) {
+		payment.getClientId().then(function(clientId) {
 
-			console.log("Got a client id", clientId);
-			console.log(clientId, currentGalleryId);
-
-			return payment.getPaymentInfo(clientId, currentGalleryId);
+			return payment.generateAddress(clientId, currentGalleryId);
 
 		}).then(function(address) {
 
