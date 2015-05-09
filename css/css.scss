@@ -159,7 +159,9 @@ body {
 			margin-bottom: 10px;
 			float: right;
 		}
-		button {
+		button, a {
+			color: #080808;
+			text-decoration: none;
 			margin-bottom: 20px;
 		}
 	}
