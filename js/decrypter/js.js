@@ -1,95 +1,85 @@
 /* global $ */
 /* global QRCode */
-/* global io */
 /* global loada */
 /* global Decrypter */
 /* global keyRing */
+/* global galleries */
+/* global payment */
 
 (function(){
 
 	"use strict";
 
-	var galleryId = "1";
+	var decrypter, currentGalleryId,
+		galleriesPlaceholder = document.querySelector(".galleries");
 
-	var GALLERIES_API = "http://www.mukuzu.com/gallery/";
-	var PAYMENTS_API = "http://www.mukuzu.com/payment/";
-	var PAYMENTS_SOCKET_URL = "//www.mukuzu.com";
-	var GALLERIES_PUBLIC_PATH = "http://www.mukuzu.com";
-	var decrypter;
+	galleries.getGalleries(function(galleryIds) {
 
-	var xhr = new XMLHttpRequest();
-		xhr.open("GET", GALLERIES_API + galleryId, true);
-		xhr.responseType = "json";
+		galleriesPlaceholder.innerHTML = "";
+		var i = 1;
+		galleryIds.forEach(function(galleryId) {
 
-	xhr.onload = function() {
+			var a = document.createElement("a");
+				a.innerHTML = "Gallery " + i++;
+				a.setAttribute("href", "#");
+				a.onclick = function(e) {
 
-		var image, i = 0,
-			images = this.response,
-			imaagesPlaceholder = document.querySelector(".images");
+					e.preventDefault();
 
-		while (image = images[i++]) {
+					var links = document.querySelectorAll(".galleries a");
+					for (var i = 0; i < links.length; ++i) {
+						links[i].removeAttribute("class");
+					}
 
-			var img = document.createElement("img");
-				img.setAttribute("src", GALLERIES_PUBLIC_PATH + image);
+					e.target.setAttribute("class", "active");
 
-			imaagesPlaceholder.appendChild(img);
+					var imaagesPlaceholder = document.querySelector(".images");
+						imaagesPlaceholder.innerHTML = "<p>Loading Gallery ...</p>";
 
-		}
+					galleries.getImages(galleryId, function(images) {
 
-		decrypter = new Decrypter(".images img");
+						var image, i = 0;
 
-		var key = keyRing.getGalleryKey(galleryId);
-		if (!key) {
-			loada.hide();
-			return false;
-		}
+						imaagesPlaceholder.innerHTML = "";
 
-		console.log(key);
+						currentGalleryId = galleryId;
 
-		decrypter.decrypt(key);
+						while (image = images[i++]) {
 
-		var remaining = key.expires - (new Date()).getTime();
-		loada.linearProgress(key.validity, remaining, function() {
-			loada.hide();
-			decrypter.revert();
+							var img = document.createElement("img");
+								img.setAttribute("src", image);
+
+							imaagesPlaceholder.appendChild(img);
+
+						}
+
+						decrypter = new Decrypter(".images img");
+
+						var key = keyRing.getGalleryKey(galleryId);
+						if (!key) {
+							loada.hide();
+							return false;
+						}
+
+						decrypter.decrypt(key);
+
+						var remaining = key.expires - (new Date()).getTime();
+						loada.linearProgress(key.validity, remaining, function() {
+							loada.hide();
+							decrypter.revert();
+						});
+
+					});
+
+				};
+
+				galleriesPlaceholder.appendChild(a);
+
 		});
 
-	};
+		galleriesPlaceholder.querySelector("a").click();
 
-	xhr.send();
-
-	var getPaymentInfo = function (clientId) {
-
-		$("#qrcode").addClass("loading");
-
-		var xhr = new XMLHttpRequest();
-			xhr.open("GET", PAYMENTS_API  + "generate/" + galleryId + "/" + clientId, true);
-			xhr.responseType = "json";
-
-		xhr.onload = function() {
-
-			var data = this.response;
-
-			$("#qrcode").removeClass("loading").addClass("loaded");
-
-			setTimeout(function() {
-				$("#qrcode").removeClass("loaded");
-				$(".paymentlink").attr("href", "bitcoin:" + data.input_address).html(data.input_address);
-				var qrcode = new QRCode("qrcodecontent", {
-					text: data.input_address,
-					width: 400,
-					height: 400,
-					colorDark : "#000000",
-					colorLight : "#ffffff",
-					correctLevel : QRCode.CorrectLevel.H
-				});
-			}, 200);
-
-		};
-
-		xhr.send();
-
-	};
+	});
 
 	var consumeKey = function(key) {
 
@@ -108,60 +98,12 @@
 
 	};
 
-	var connector = (function() {
-
-		var clientId, socket;
-
-		var getClientId = function(callback) {
-
-			if (clientId) {
-				callback(clientId);
-				return;
-			}
-
-			socket = io.connect(PAYMENTS_SOCKET_URL, {"sync disconnect on unload": true} );
-
-			socket.on("client", function(client) {
-				clientId = client.clientId;
-				callback(client.clientId);
-				console.log("client is %s", client.clientId);
-			});
-
-			socket.on("error", function(){
-				$("#qrcode").html("<p class='lead'>WebSockets do not seems to be working on your browser or network</p>");
-			});
-
-		};
-
-		var on = function(event, callback) {
-
-			socket.on(event, callback);
-
-		};
-
-		return {
-			getClientId: getClientId,
-			on: on
-		};
-
-	})();
-
-
 	$("#getKey").on("click", function(e) {
 
 		e.preventDefault();
 
-		var xhr = new XMLHttpRequest();
-			xhr.open("GET", GALLERIES_API + galleryId + "/key", true);
-			xhr.responseType = "json";
+		galleries.getKey(currentGalleryId, consumeKey);
 
-		xhr.onload = function() {
-
-			consumeKey(this.response);
-
-		};
-
-		xhr.send();
 		$("#myModal").modal("hide");
 
 	});
@@ -172,13 +114,41 @@
 		$("#key").html("");
 		$("#myModal").modal();
 
-		connector.getClientId(function(clientId) {
+		$("#qrcode").addClass("loading");
 
-			getPaymentInfo(clientId);
+		payment.getClientId(function(clientId) {
+
+			console.log("Got a client id", clientId);
+			console.log(clientId, currentGalleryId);
+
+			return payment.getPaymentInfo(clientId, currentGalleryId);
+
+		}).then(function(address) {
+
+			$("#qrcode").removeClass("loading").addClass("loaded");
+
+			setTimeout(function() {
+				$("#qrcode").removeClass("loaded");
+				$(".paymentlink").attr("href", "bitcoin:" + address).html();
+				var qrcode = new QRCode("qrcodecontent", {
+					text: address,
+					width: 400,
+					height: 400,
+					colorDark : "#000000",
+					colorLight : "#ffffff",
+					correctLevel : QRCode.CorrectLevel.H
+				});
+				return qrcode; // useless
+			}, 200);
+
+		}).catch(function(err) {
+
+			console.log(err);
+			$("#qrcode").html("<p class='lead'>WebSockets do not seems to be working on your browser or network</p>");
 
 		});
 
-		connector.on("key", function(data) {
+		payment.on("key", function(data) {
 
 			consumeKey(data.key);
 			$("#myModal").modal("hide");

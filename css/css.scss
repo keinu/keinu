@@ -324,8 +324,35 @@ body {
 
 #decrypter {
 
-	.images {
+	.galleries {
+		display: block;
+		overflow: hidden;
+		a, p {
+			padding: 12px 0px;
+			float: left;
+			&:after {
+				content: "|";
+				padding-left: 10px;
+				padding-right: 10px;
+			}
+			&:last-child {
+				&:after {
+					content: "";
+				}
+			}
+			&.active,
+			a:active {
+				color: inherit;
+				text-decoration: none;
+				font-weight: bold;
+			}
+		}
 
+	}
+
+	.images {
+		display: block;
+		overflow: hidden;
 		line-height: 0;
 		-webkit-column-count: 2;
 		-webkit-column-gap:   5px;
@@ -333,6 +360,10 @@ body {
 		-moz-column-gap:      5px;
 		column-count:         2;
 		column-gap:           5px;
+
+		p {
+			line-height: normal;
+		}
 
 		img {
 			/* Just in case there are inline attributes */

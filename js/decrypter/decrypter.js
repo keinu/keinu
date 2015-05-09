@@ -112,12 +112,13 @@ var Decrypter = function(selector, options) {
 				var blob = new Blob([byteArray], {type: "image/jpg"});
 
 				var src = URL.createObjectURL(blob);
+
 				image.setAttribute("class", "loading");
-				setTimeout(function() {
-					image.setAttribute("src", src);
+				image.onload = function(){
 					image.removeAttribute("class");
 					callback(null, "done");
-				}, 200);
+				};
+				image.setAttribute("src", src);
 
 			});
 
@@ -165,13 +166,15 @@ var Decrypter = function(selector, options) {
 
 		var src = image.dataset.originSrc;
 		if (src) {
+
 			image.setAttribute("class", "loading");
-			setTimeout(function(){
-				image.setAttribute("src", src);
-				delete image.dataset.originSrc;
+			image.onload = function() {
 				image.removeAttribute("class");
 				callback(null, "Reverted");
-			}, 200);
+			};
+			image.setAttribute("src", src);
+			delete image.dataset.originSrc;
+
 		}
 
 	};
@@ -179,7 +182,7 @@ var Decrypter = function(selector, options) {
 	// Public function for revert all selected images to their initial state
 	var revert = function() {
 
-		async.mapSeries(images, revertImage, function(){
+		async.mapSeries(images, revertImage, function() {
 			intitialise();
 		});
 
