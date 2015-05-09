@@ -1,10 +1,6 @@
 keinu
 =====	
 
-Keinu, a Ghost theme
+Keinu, the git repository for the source of http://www.keinu.net
 
-This Ghost theme features 3 static pages:
- *index*, *résumé* and *music*
-the most interesting par being the résumé section.
-
-It gives a visual respresentation of a given JSON formatted résumé using D3.js library.
+check out gh=page branch for the deployed source
