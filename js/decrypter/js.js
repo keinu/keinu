@@ -10,90 +10,62 @@
 
 	"use strict";
 
-	var decrypter, currentGalleryId,
-		galleriesPlaceholder = document.querySelector(".galleries");
+	var decrypter = new Decrypter(".images img");
 
-	galleries.getGalleries(function(galleryIds) {
+	galleries.displyNavigation().then(function(firstGallery) {
 
-		galleriesPlaceholder.innerHTML = "";
-		var i = 1;
-		galleryIds.forEach(function(galleryId) {
+		return galleries.displayGallery(firstGallery);
 
-			var a = document.createElement("a");
-				a.innerHTML = "Gallery " + i++;
-				a.setAttribute("href", "#");
-				a.onclick = function(e) {
+	}).fail(function(err) {
 
-					e.preventDefault();
-
-					var links = document.querySelectorAll(".galleries a");
-					for (var i = 0; i < links.length; ++i) {
-						links[i].removeAttribute("class");
-					}
-
-					e.target.setAttribute("class", "active");
-
-					var imaagesPlaceholder = document.querySelector(".images");
-						imaagesPlaceholder.innerHTML = "<p>Loading Gallery ...</p>";
-
-					galleries.getImages(galleryId, function(images) {
-
-						var image, i = 0;
-
-						imaagesPlaceholder.innerHTML = "";
-
-						currentGalleryId = galleryId;
-
-						while (image = images[i++]) {
-
-							var img = document.createElement("img");
-								img.setAttribute("src", image);
-
-							imaagesPlaceholder.appendChild(img);
-
-						}
-
-						decrypter = new Decrypter(".images img");
-
-						var key = keyRing.getGalleryKey(galleryId);
-						if (!key) {
-							loada.hide();
-							return false;
-						}
-
-						decrypter.decrypt(key);
-
-						var remaining = key.expires - (new Date()).getTime();
-						loada.linearProgress(key.validity, remaining, function() {
-							loada.hide();
-							decrypter.revert();
-						});
-
-					});
-
-				};
-
-				galleriesPlaceholder.appendChild(a);
-
-		});
-
-		galleriesPlaceholder.querySelector("a").click();
+		console.error(err);
 
 	});
 
-	var consumeKey = function(key) {
+	document.addEventListener("galleryDisplayed", function(e) {
 
-		key = keyRing.setExpiry(key);
+		var galleryId = e.detail;
+		decryptGallery(galleryId);
 
-		var remaining = key.expires - (new Date()).getTime();
-		loada.linearProgress(key.validity, remaining, function() {
+	}, false);
+
+
+	var decryptGallery = function(galleryId) {
+
+		var key = keyRing.getGalleryKey(galleryId);
+		if (!key) {
 			loada.hide();
-			decrypter.revert();
+			return false;
+		}
+
+		decrypter.decryptGallery(key).then(function(key) {
+
+			decrypter.setTimers(key);
+
+			var remainingTime = key.expires - (new Date()).getTime();
+			loada.linearProgress(key.validity, remainingTime, function() {
+				loada.hide();
+				decrypter.revert();
+			});
+
 		});
 
-		decrypter.decrypt(key);
-		decrypter.on("decrypt", function(e) {
-			keyRing.add(e.detail.key);
+	};
+
+	var consumeKey = function(key) {
+
+		return decrypter.decryptGallery(key).then(function(key) {
+
+			key = keyRing.add(key);
+
+			decrypter.setTimers(key);
+
+			var remaining = key.expires - (new Date()).getTime();
+			loada.linearProgress(key.validity, remaining, function() {
+				loada.hide();
+				decrypter.revert();
+			});
+
 		});
 
 	};
@@ -101,8 +73,15 @@
 	$("#getKey").on("click", function(e) {
 
 		e.preventDefault();
+		galleries.getKey().then(function(key) {
 
-		galleries.getKey(currentGalleryId, consumeKey);
+			return consumeKey(key);
+
+		}).fail(function(err) {
+
+			console.error(err);
+
+		});
 
 		$("#myModal").modal("hide");
 
@@ -118,7 +97,7 @@
 
 		payment.getClientId().then(function(clientId) {
 
-			return payment.generateAddress(clientId, currentGalleryId);
+			return payment.generateAddress(clientId, galleries.getGalleryId());
 
 		}).then(function(address) {
 

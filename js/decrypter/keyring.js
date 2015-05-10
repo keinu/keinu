@@ -15,6 +15,7 @@ var keyRing = (function () {
 
 	var add = function(key) {
 
+		key = setExpiry(key);
 		for (var i in keys) {
 			if (keys[i].value === key.value) {
 				keys[i] = key;
