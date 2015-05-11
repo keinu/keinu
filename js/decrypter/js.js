@@ -11,6 +11,7 @@
 	"use strict";
 
 	var decrypter = new Decrypter(".images img");
+	var progress;
 
 	galleries.displyNavigation().then(function(firstGallery) {
 
@@ -29,7 +30,6 @@
 
 	}, false);
 
-
 	var decryptGallery = function(galleryId) {
 
 		var key = keyRing.getGalleryKey(galleryId);
@@ -40,10 +40,12 @@
 
 		decrypter.decryptGallery(key).then(function(key) {
 
-			decrypter.setTimers(key);
-
 			var remainingTime = key.expires - (new Date()).getTime();
-			loada.linearProgress(key.validity, remainingTime, function() {
+			if (progress) {
+				clearTimeout(progress);
+			}
+
+			progress = loada.linearProgress(key.validity, remainingTime, function() {
 				loada.hide();
 				decrypter.revert();
 			});
@@ -54,14 +56,17 @@
 
 	var consumeKey = function(key) {
 
+		key = keyRing.add(key);
+
 		return decrypter.decryptGallery(key).then(function(key) {
 
-			key = keyRing.add(key);
-
-			decrypter.setTimers(key);
-
 			var remaining = key.expires - (new Date()).getTime();
-			loada.linearProgress(key.validity, remaining, function() {
+
+			if (progress) {
+				clearTimeout(progress);
+			}
+
+			progress = loada.linearProgress(key.validity, remaining, function() {
 				loada.hide();
 				decrypter.revert();
 			});

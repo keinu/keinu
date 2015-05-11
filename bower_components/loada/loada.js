@@ -58,7 +58,7 @@ var loada = (function() {
 		}, 1100);
 
 		// Callback when it's done
-		setTimeout(function() {
+		return setTimeout(function() {
 			callback();
 		}, remainingDuration);
 

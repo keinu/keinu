@@ -127,7 +127,7 @@ var Decrypter = function(selector, options) {
 
 		var images = document.querySelectorAll(selector);
 
-		async.mapSeries(images, decrypter, function(err) {
+		async.map(images, decrypter, function(err) {
 
 			if (err) {
 				deferred.reject(err);
@@ -136,6 +136,8 @@ var Decrypter = function(selector, options) {
 			}
 
 			deferred.resolve(key);
+
+			setTimers(key, images);
 
 		});
 
@@ -147,25 +149,25 @@ var Decrypter = function(selector, options) {
 	var revertImage = function(image, callback) {
 
 		var src = image.dataset.originSrc;
-		if (src) {
-
-			image.setAttribute("class", "loading");
-			image.onload = function() {
-				image.removeAttribute("class");
-				callback(null, "Reverted");
-			};
-			image.setAttribute("src", src);
-			delete image.dataset.originSrc;
-
+		if (!src) {
+			return;
 		}
+
+		image.setAttribute("class", "loading");
+		image.onload = function() {
+			image.removeAttribute("class");
+			callback(null, "Reverted");
+		};
+		image.setAttribute("src", src);
+		delete image.dataset.originSrc;
 
 	};
 
-	var setTimers = function(key) {
+	var setTimers = function(key, images) {
 
 		var now = (new Date()).getTime();
 		setTimeout(function() {
-			revert();
+			revert(images);
 			console.log("Reverted");
 		}, key.expires - now);
 		console.log("Valid key, expires in %d seconds", (key.expires - now) / 1000);
@@ -173,18 +175,21 @@ var Decrypter = function(selector, options) {
 		// Failsafe, set timeout not trigered when page is out of focus
 		window.addEventListener("focus", function() {
 			if (hasExpired(key)) {
-				revert();
+				revert(images);
 				console.log("Reverted onfocus");
 			}
 		});
 
-	}
+	};
 
 
 	// Public function for revert all selected images to their initial state
-	var revert = function() {
+	var revert = function(images) {
 
-		var images = document.querySelectorAll(selector);
+		if (!images) {
+			return;
+		}
+
 		async.mapSeries(images, revertImage, function() {
 			intitialise();
 		});
