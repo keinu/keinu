@@ -38,7 +38,8 @@ var Decrypter = function(selector, options) {
 		var xhr = new XMLHttpRequest();
 		xhr.open("GET", src, true);
 		xhr.responseType = "arraybuffer";
-
+      		invocation.setRequestHeader('X-PINGOTHER', 'pingpong');
+      
 		xhr.onload = function() {
 			callback(arrayBufferToBase64(this.response));
 		};
