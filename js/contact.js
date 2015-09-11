@@ -14,7 +14,10 @@
 		$(this).find(".help-block").html("");
 		var btn = $(this).find("button");
 		var form = this;
-
+		var data = $(this).serialize();
+		    // Do this on the server FFS
+		    data.message = "From: " + data.email + "\n\n" + data.message;
+		
 		$.ajax({
 
 			method: "POST",
