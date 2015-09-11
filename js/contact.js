@@ -21,7 +21,7 @@
 		$.ajax({
 
 			method: "POST",
-			data: $(this).serialize(),
+			data: data,
 			url: CONTACT_API,
 			dataType: "json"
 
