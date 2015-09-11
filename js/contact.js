@@ -15,8 +15,9 @@
 		var btn = $(this).find("button");
 		var form = this;
 		var data = $(this).serialize();
+
 		    // Do this on the server FFS
-		    data += "\nFrom: " + data.email;
+		    data += "\nFrom: " + $(this).find("[name='email']").val();
 		
 		$.ajax({
 
