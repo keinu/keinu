@@ -3,8 +3,10 @@
 
 	"use strict";
 
+	var MUSIC_API = "http://www.mukuzu.com/music";
+
 	var getFavourites = function() {
-		return $.getJSON("http://localhost:8080/music");
+		return $.getJSON(MUSIC_API);
 	};
 
 	getFavourites().then(function(favourites) {
