@@ -145,6 +145,7 @@ var galleries = (function() {
 
 				var img = document.createElement("img");
 					img.setAttribute("src", image);
+					img.setAttribute("crossorigin", "use-credentials");
 
 				imaagesPlaceholder.appendChild(img);
 
