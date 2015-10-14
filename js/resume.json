@@ -83,7 +83,7 @@
 			"duties": []
 		},
 		{
-			"name": "NSW Departement of Attorney General and Justice",
+			"name": "NSW Department of Attorney General and Justice",
 			"startDate": "2013-03-22",
 			"employerProfile": "http://www.linkedin.com/company/department-of-justice-and-attorney-general?trk=prof-exp-company-name",
 			"location": "Sydney, Australia",
@@ -100,22 +100,35 @@
 						"HTML", "JavaScript", "Java", "LESS"
 					],
 					"tags": [
-						"Spring", "JavaScript", "Bootstrap", "Handlebars", "Git", "Jira"
+						"Spring", "JavaScript", "Bootstrap", "Handlebars", "Git", "Jira", "Gulp", "AWS"
 					]
 				},
 				{
 					"name" : "NSW Caselaw",
 					"startDate": "2014-07-01",
-					"endDate": "",
+					"endDate": "2015-06-30",
 					"description": "Development of a Decisions publishing platform using modern front end and back end technologies. Responsive design web application development for desktop and tablet users. Front end design patterns and functionality framework implementation.",
 					"link": "http://www.caselaw.nsw.gov.au",
 					"languages": [
 						"HTML", "JavaScript", "Java", "LESS"
 					],
 					"tags": [
-						"Spring", "JavaScript", "Bootstrap", "Handlebars", "Mongo", "AWS", "CKEditor", "Git", "Jira"
+						"Spring", "JavaScript", "Bootstrap", "Handlebars", "Mongo", "AWS", "CKEditor", "Git", "Jira", "Grunt"
 					]
 				}
+				{
+					"name" : "Jury Management System for the state of Victoria",
+					"startDate": "2015-07-01",
+					"endDate": "",
+					"description": "Development of a Jury Management System using modern front end and back end technologies. Responsive design web application development for desktop and tablet users. Front end design patterns and functionality framework implementation.",
+					"link": "",
+					"languages": [
+						"HTML", "JavaScript", "Java", "LESS"
+					],
+					"tags": [
+						"Spring", "JavaScript", "Bootstrap", "Handlebars", "Git", "Jira", "Gulp", "AWS"
+					]
+				},
 			],
 			"duties": [
 			]
