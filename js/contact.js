@@ -14,12 +14,14 @@
 		$(this).find(".help-block").html("");
 		var btn = $(this).find("button");
 		var form = this;
-		var data = $(this).serialize();
 
 		$.ajax({
 
 			method: "POST",
-			data: data,
+			data: {
+				from: $(form).find("[name='name']").val() + " <" + $(form).find("[name='email']").val() + ">",
+				text: $(form).find("[name='message']").val()
+			},
 			url: CONTACT_API,
 			dataType: "json"
 
