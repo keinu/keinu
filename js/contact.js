@@ -18,10 +18,11 @@
 		$.ajax({
 
 			method: "POST",
-			data: {
+			data: JSON.stringify({
 				from: $(form).find("[name='name']").val() + " <" + $(form).find("[name='email']").val() + ">",
 				text: $(form).find("[name='message']").val()
-			},
+			}),
+            contentType: "application/json;charset=utf-8",
 			url: CONTACT_API,
 			dataType: "json"
 
