@@ -5,7 +5,7 @@
 
 	"use strict";
 
-	var CONTACT_API = "http://www.mukuzu.com/contact/send";
+	var CONTACT_API = "https://q6060sbvrh.execute-api.eu-west-1.amazonaws.com/production/mukuzu";
 
 	$(document).on("submit", "form[name='contact']", function(e) {
 
@@ -16,9 +16,6 @@
 		var form = this;
 		var data = $(this).serialize();
 
-		    // Do this on the server FFS
-		    data += "\nFrom: " + $(this).find("[name='email']").val();
-		
 		$.ajax({
 
 			method: "POST",
