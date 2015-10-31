@@ -3,7 +3,7 @@
 
 	"use strict";
 
-	var MUSIC_API = "http://www.mukuzu.com/music";
+	var MUSIC_API = "https://94h6qnblni.execute-api.eu-west-1.amazonaws.com/production/music";
 
 	var getFavourites = function() {
 		return $.getJSON(MUSIC_API);
