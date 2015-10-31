@@ -5,7 +5,7 @@
 
 	"use strict";
 
-	var CONTACT_API = "https://q6060sbvrh.execute-api.eu-west-1.amazonaws.com/production/mukuzu";
+	var CONTACT_API = "https://94h6qnblni.execute-api.eu-west-1.amazonaws.com/production/contact";
 
 	$(document).on("submit", "form[name='contact']", function(e) {
 

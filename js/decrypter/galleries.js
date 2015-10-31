@@ -145,6 +145,8 @@ var galleries = (function() {
 
 				var img = document.createElement("img");
 					img.setAttribute("src", image);
+
+					// Sends origin headers so the response get cached with CROS credentials
 					img.setAttribute("crossorigin", "use-credentials");
 
 				imaagesPlaceholder.appendChild(img);

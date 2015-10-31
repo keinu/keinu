@@ -36,7 +36,6 @@
 				totalDuration.add(project.days, 'days');
 
 				_.each(project.languages, function(language) {
-
 					if (typeof languages[language] === "undefined") {
 						languages[language] = project.days;
 					} else {
