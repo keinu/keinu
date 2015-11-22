@@ -8,19 +8,21 @@ var galleries = (function() {
 
 	var imaagesPlaceholder = document.querySelector(".images");
 	var galleriesPlaceholder = document.querySelector(".galleries");
+	var containers;
 
-	var ROOT_URL = "http://www.mukuzu.com/gallery";
+	var ROOT_URL = "https://crzgjyz1ek.execute-api.eu-west-1.amazonaws.com/production";
 
-	var getGalleries = function() {
+	var getContainers = function() {
 
 		var deferred = Q.defer();
 
 		var xhr = new XMLHttpRequest();
-			xhr.open("GET", ROOT_URL + "/list", true);
+			xhr.open("GET", ROOT_URL + "/containers?user=VJ2uHpzee");
 			xhr.responseType = "json";
 
 		xhr.onload = function() {
-			deferred.resolve(this.response);
+			containers = this.response.container;
+			deferred.resolve(containers);
 		};
 
 		xhr.onerror = function() {
@@ -35,23 +37,9 @@ var galleries = (function() {
 
 	var getImages = function(galleryId) {
 
-		var deferred = Q.defer();
-
-		var xhr = new XMLHttpRequest();
-			xhr.open("GET", ROOT_URL + "/" + galleryId + "/list", true);
-			xhr.responseType = "json";
-
-		xhr.onload = function() {
-			deferred.resolve(this.response);
-		};
-
-		xhr.onerror = function() {
-			deferred.reject(this.responseStatus);
-		};
-
-		xhr.send();
-
-		return deferred.promise;
+		return containers.find(function(container) {
+			return container.id === galleryId;
+		}).files;
 
 	};
 
@@ -60,7 +48,7 @@ var galleries = (function() {
 		var deferred = Q.defer();
 
 		var xhr = new XMLHttpRequest();
-			xhr.open("GET", ROOT_URL + "/" + currentGalleryId + "/key", true);
+			xhr.open("GET", ROOT_URL + "/payment/key/" + currentGalleryId, true);
 			xhr.responseType = "json";
 
 		xhr.onload = function() {
@@ -79,18 +67,18 @@ var galleries = (function() {
 
 	var displyNavigation = function() {
 
-		return getGalleries().then(function(galleryIds) {
+		return getContainers().then(function(containers) {
 
 			var i = 1;
 
 			galleriesPlaceholder.innerHTML = "";
 
-			galleryIds.forEach(function(galleryId) {
+			containers.forEach(function(container) {
 
 				var a = document.createElement("a");
 					a.innerHTML = "Gallery " + i++;
 					a.setAttribute("href", "#");
-					a.dataset.galleryId = galleryId;
+					a.dataset.galleryId = container.id;
 
 				galleriesPlaceholder.appendChild(a);
 
@@ -120,11 +108,12 @@ var galleries = (function() {
 
 			});
 
-			return galleryIds[0];
+			return containers[0].id;
 
 		}).fail(function(err) {
 
 			console.error(err);
+			console.trace(err.stack);
 
 		});
 
@@ -135,32 +124,30 @@ var galleries = (function() {
 		imaagesPlaceholder.innerHTML = "<p>Loading Gallery ...</p>";
 		currentGalleryId = galleryId;
 
-		return galleries.getImages(galleryId).then(function(images) {
+		var images = galleries.getImages(galleryId);
 
-			var image, i = 0;
+		var image, i = 0;
 
-			imaagesPlaceholder.innerHTML = "";
+		imaagesPlaceholder.innerHTML = "";
 
-			while (image = images[i++]) {
+		while (image = images[i++]) {
 
-				var img = document.createElement("img");
-					img.setAttribute("src", image);
+			var img = document.createElement("img");
+				img.setAttribute("src", "https://s3-eu-west-1.amazonaws.com/dvolvr/" + image.key);
 
-					// Sends origin headers so the response get cached with CROS credentials
-					img.setAttribute("crossorigin", "use-credentials");
+				// Sends origin headers so the response get cached with CROS credentials
+				img.setAttribute("crossorigin", "use-credentials");
 
-				imaagesPlaceholder.appendChild(img);
+			imaagesPlaceholder.appendChild(img);
 
-			}
+		}
 
-			var event = new CustomEvent("galleryDisplayed", {
-				detail: galleryId
-			});
-			document.dispatchEvent(event);
-
-			return galleryId;
-
+		var event = new CustomEvent("galleryDisplayed", {
+			detail: galleryId
 		});
+		document.dispatchEvent(event);
+
+		return galleryId;
 
 	};
 

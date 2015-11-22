@@ -60,7 +60,11 @@
 
 		return decrypter.decryptGallery(key).then(function(key) {
 
+			console.log(key.expires);
+			console.log((new Date()).getTime());
+
 			var remaining = key.expires - (new Date()).getTime();
+			console.log(remaining);
 
 			if (progress) {
 				clearTimeout(progress);
@@ -94,33 +98,50 @@
 
 	$("#decrypt").on("click", function() {
 
-		$("#qrcodecontent").html("");
 		$("#key").html("");
 		$("#myModal").modal();
 
 		$("#qrcode").addClass("loading");
 
-		payment.getClientId().then(function(clientId) {
+		console.log(galleries.getGalleryId())
 
-			return payment.generateAddress(clientId, galleries.getGalleryId());
-
-		}).then(function(address) {
+		payment.generateAddress(galleries.getGalleryId()).then(function(data) {
 
 			$("#qrcode").removeClass("loading").addClass("loaded");
 
 			setTimeout(function() {
+
 				$("#qrcode").removeClass("loaded");
-				$(".paymentlink").attr("href", "bitcoin:" + address).html();
+				$("#qrcodecontent").html("");
+				$(".paymentlink").attr("href", "bitcoin:" + data.address).html();
 				var qrcode = new QRCode("qrcodecontent", {
-					text: address,
+					text: data.address,
 					width: 400,
 					height: 400,
 					colorDark : "#000000",
 					colorLight : "#ffffff",
 					correctLevel : QRCode.CorrectLevel.H
 				});
+
 				return qrcode; // useless
+
 			}, 200);
+
+			return data.channelName;
+
+		}).then(function(channelName) {
+
+			return payment.pollChannel(channelName);
+
+		}).then(function(key) {
+
+			$("#myModal").modal("hide");
+
+			if (!key) {
+				return false;
+			}
+
+			consumeKey(key);
 
 		}).catch(function(err) {
 
@@ -129,12 +150,11 @@
 
 		});
 
-		payment.on("key", function(data) {
+	});
 
-			consumeKey(data.key);
-			$("#myModal").modal("hide");
+	$("#myModal").on("hidden.bs.modal", function(e) {
 
-		});
+		payment.stopPolling();
 
 	});
 
