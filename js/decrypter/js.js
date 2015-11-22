@@ -96,7 +96,7 @@
 
 	});
 
-	$("#decrypt").on("click", function() {
+	$("#decrypt, .images").on("click", function() {
 
 		$("#key").html("");
 		$("#myModal").modal();
