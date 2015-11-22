@@ -298,12 +298,19 @@
 
 	applyHighlights();
 
-	$.getJSON("/js/resume.json").done(function(resume) {
-		resume = dataStructurer(resume);
+
+	$.getJSON("/js/resume.json").done(function(data) {
+
+		var resume = dataStructurer(data);
+
 		drawTimeline(resume);
 		drowDonuts(resume);
-  	});
 
+  	}).fail(function(err, message) {
+
+  		console.error(err, message);
+
+  	});
 
 })();
 
