@@ -19,8 +19,9 @@
 
 			method: "POST",
 			data: JSON.stringify({
-				from: $(form).find("[name='name']").val() + " <" + $(form).find("[name='email']").val() + ">",
-				text: $(form).find("[name='message']").val()
+				name: $(form).find("[name='name']").val(),
+				email: $(form).find("[name='email']").val(),
+				body: $(form).find("[name='message']").val()
 			}),
             contentType: "application/json;charset=utf-8",
 			url: CONTACT_API,
