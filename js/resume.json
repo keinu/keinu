@@ -11,18 +11,18 @@
 		},
 		{
 			"area" : "User experience and methodologies",
-			"skills": ["Wire-frames", "User testing", "Annotated wire-franes", "Agile", "DIY", "Cow boy style", "Read the doc"]
+			"skills": ["Wireframes", "User testing", "Annotated wire-franes", "Agile", "DIY", "Cow boy style", "Read the doc"]
 		},
 		{
 			"area": "Frameworks, Services and Libraries",
-			"skills": ["YUI", "jQuery", "NPM", "AWS", "Mocha", "GitHub", "Bitbucket", "Jira", "Backbone", "Node-webkit", "Bower", "Mozilla SDK", "Liferay", "Zend", "Jelix", "Wordpress", "Spring", "Express.js", "I can continue but, should I?"]
+			"skills": ["Serverless", "AWS", "YUI", "jQuery", "NPM", "AWS", "Mocha", "GitHub", "Bitbucket", "Jira", "Backbone", "Node-webkit", "Bower", "Mozilla SDK", "Liferay", "Zend", "Jelix", "Wordpress", "Spring", "Express.js", "I can continue but, should I?"]
 		}
 	],
 	"experiences": [
 		{
-			"name": "Self Employed",
+			"name": "Personal venture",
 			"startDate": "2003-01-01",
-			"employerProfile": "http://www.keinu.net",
+			"employerProfile": "https://www.keinu.net",
 			"location": "Teh Internetz",
 			"position": "Full stack developer",
 			"description": "Experiments, hot projects, successes, mostly failures.",
@@ -83,8 +83,33 @@
 			"duties": []
 		},
 		{
+			"name": "Cloud Conformity",
+			"startDate": "2016-01-01",
+			"employerProfile": "https://www.linkedin.com/company/10621658/",
+			"location": "Sydney, Australia - Montreal, Canada",
+			"position": "Co-founder and VP of Enginerring",
+			"description": "Cloud Conformity is a market leading software platform helping companies & IT professionals who have invested in the cloud to continuously monitor their AWS cloud infrastructure",
+			"projects": [
+				{
+					"name" : "Cloud Conformity",
+					"startDate": "2016-01-01,
+					"description": "Founding, managing, designing, architecting, solutioning, ux-ing, administrating, developing, collaborating, selling, marketing, litle sleeping, talking, mentoring, explaining, writing",
+					"link": "https://www.cloudconformity.com",
+					"languages": [
+						"HTML", "JavaScript", "CSS"
+					],
+					"tags": [
+						"Serverless", "AWS", "Cloud", "NodeJs", "EmberJs"
+					]
+				}
+			],
+			"duties": [
+			]
+		},
+		{
 			"name": "NSW Department of Attorney General and Justice",
 			"startDate": "2013-03-22",
+			"endDate": "2016-10-31",
 			"employerProfile": "http://www.linkedin.com/company/department-of-justice-and-attorney-general?trk=prof-exp-company-name",
 			"location": "Sydney, Australia",
 			"position": "Senior Front End Developer",
@@ -119,7 +144,7 @@
 				{
 					"name" : "Jury Management System for the state of Victoria",
 					"startDate": "2015-07-01",
-					"endDate": "",
+					"endDate": "2016-01-01",
 					"description": "Development of a Jury Management System using modern front end and back end technologies. Responsive design web application development for desktop and tablet users. Front end design patterns and functionality framework implementation.",
 					"link": "",
 					"languages": [
