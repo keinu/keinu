@@ -191,7 +191,7 @@
 		};
 
 		var x = d3.time.scale()
-			.domain([ moment("2003-01-01"), moment("2015-06-30")])
+			.domain([ moment("2003-01-01"), moment()])
 			.range([0, w - m[1] - m[2]]);
 
 
