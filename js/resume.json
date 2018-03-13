@@ -144,7 +144,7 @@
 				{
 					"name" : "Jury Management System for the state of Victoria",
 					"startDate": "2015-07-01",
-					"endDate": "2016-01-01",
+					"endDate": "2015-09-30",
 					"description": "Development of a Jury Management System using modern front end and back end technologies. Responsive design web application development for desktop and tablet users. Front end design patterns and functionality framework implementation.",
 					"link": "",
 					"languages": [
@@ -152,6 +152,19 @@
 					],
 					"tags": [
 						"Spring", "JavaScript", "Bootstrap", "Handlebars", "Git", "Jira", "Gulp", "AWS"
+					]
+				},
+				{
+					"name" : "Audio Video Link",
+					"startDate": "2015-10-01",
+					"endDate": "2016-10-30",
+					"description": "Development of an A/V communication system to help inmates in remote locations to communicate with loved-ones and personas within the judicial system.",
+					"link": "",
+					"languages": [
+						"HTML", "JavaScript", "NodeJS", "CSS", "SASS"
+					],
+					"tags": [
+						"Serverless", "JavaScript", "Bootstrap", "EmberJs", "Git", "Jira", "Gulp", "AWS", "Lambda"
 					]
 				}
 			],
