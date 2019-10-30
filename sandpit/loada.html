@@ -1,0 +1,43 @@
+---
+layout: default
+title: Sandpit | Loada - the simple top-of-the-page progress bar
+class: sandpit
+menu: sandpit
+permalink: /sandpit/loada.html
+---
+
+<div class="container">
+
+	<div class="row">
+
+		<div class="col-md-3 titles">
+			<h2>Loada</h2>
+		</div>
+
+		<div class="col-md-8 contents">
+			<p class="lead">
+				Displays a progress line on the top of the page, <a href="https://github.com/keinu/loada" target="_blank">View source</a>
+			</p>
+		</div>
+
+	</div>
+
+	<div class="row">
+
+		<div class="col-md-8 col-md-offset-3">
+			<p>
+				Using following links will adjust the progress bar on the top of the page:<br />
+			</p>
+			<form>
+				<button href="#" class="btn btn-default" onclick="loada.go(10)" type="button">10%</button>
+				<button href="#" class="btn btn-default" onclick="loada.go(50)" type="button">50%</button>
+				<button href="#" class="btn btn-default" onclick="loada.go(90)" type="button">90%</button>
+			</form>
+		</div>
+
+	</div>
+
+</div>
+
+<script src="/bower_components/loada/loada.js"></script>
+<link rel="stylesheet" href="/bower_components/loada/css.css">

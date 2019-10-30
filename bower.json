@@ -1,0 +1,20 @@
+{
+  "name": "keinu",
+  "version": "0.0.0",
+  "homepage": "https://github.com/keinu/keinu",
+  "authors": [
+    "Xabi Errotabehere <github@keinu.net>"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "loada": "keinu/loada",
+    "qrcode": "davidshimjs/qrcodejs"
+  },
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

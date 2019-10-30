@@ -1,0 +1,65 @@
+#loada {
+
+	-webkit-transform: translateZ(0);
+	-moz-transform: translateZ(0);
+	-ms-transform: translateZ(0);
+	-o-transform: translateZ(0);
+	transform: translateZ(0);
+
+	.pulse-mixin () {
+		from {
+			box-shadow: 0 0 0px 0px #fff;
+		}
+		to {
+			box-shadow: 0 0px 9px 1px #fff;
+		}
+	}
+
+	@-webkit-keyframes pulse {.pulse-mixin;}
+	@-moz-keyframes pulse {.pulse-mixin;}
+	@-ms-keyframes pulse {.pulse-mixin;}
+	@-o-keyframes pulse {.pulse-mixin;}
+	@keyframes pulse {.pulse-mixin;}
+
+	width: 0;
+	height: 2px;
+	background-color: blue;
+	position: fixed;
+	border-radius: 3px;
+	box-shadow: 0 0px 9px 0px #fff;
+	opacity: 0;
+	left: 0;
+	z-index: 88888;
+	transition-property: opacity, width;
+	transition-duration: 1s, 1s;
+	transition-timing-function: ease, ease;
+
+	&.show {
+		opacity: 1;
+		width: 0;
+	}
+
+	&:after {
+		-webkit-transform: translateZ(0);
+		-moz-transform: translateZ(0);
+		-ms-transform: translateZ(0);
+		-o-transform: translateZ(0);
+		transform: translateZ(0);
+
+		content: " ";
+		background-color: white;
+		border-radius: 100%;
+		width: 3px;
+		height: 2px;
+		float: right;
+		animation-name: pulse;
+		animation-duration: .2s;
+		animation-iteration-count: infinite;
+		animation-direction: alternate;
+		-webkit-animation-name: pulse;
+		-webkit-animation-duration: .2s;
+		-webkit-animation-iteration-count: infinite;
+		-webkit-animation-direction: alternate;
+	}
+
+}

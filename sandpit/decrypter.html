@@ -1,0 +1,108 @@
+---
+layout: default
+title: Sandpit | Decrypter - the simple image encrypter/decrypter
+class: decrypter
+permalink: /sandpit/decrypter.html
+---
+
+<link rel="stylesheet" href="/bower_components/loada/css.css">
+
+<div class="container">
+
+	<div class="row">
+
+		<div class="col-md-3 titles">
+			<h2>Decrypter</h2>
+		</div>
+
+		<div class="col-md-8 contents">
+
+			<p class="lead">
+				Decrypts loaded images containing a preview and the encrypted image in one file. Once a valid key has been found to decrypt images,
+				the key is stored in a keychain in the localstorage for a given time.<br />
+				Refreshing the page will recall the valid key and decrypt images.
+			</p>
+
+		</div>
+
+	</div>
+
+	<div class="row">
+
+		<div class="col-sm-3 titles">
+			<button type="button" class="btn btn-default" id="decrypt">
+				Decrypt images
+			</button>
+		</div>
+
+		<div class="col-sm-8">
+
+			<div class="galleries">
+				<p>Loading galleries ...</p>
+			</div>
+
+			<div class="images">
+
+			</div>
+
+		</div>
+
+	</div>
+
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="text-center">
+
+				<h1>To decrypt images</h1>
+
+				<div class="content">
+
+					<p>
+						Get the key code and decrypt images
+					</p>
+
+					<button class="btn" id="getKey">Get key and decrypt!</button>
+
+					<h2>Or</h2>
+
+					<p>You can also send me few bits to decrypt the images, any amount above 1 mBTC works.</p>
+					<p>The decryption will start as soon as the transaction is propagated to the network.</p>
+
+					<div id="qrcode">
+						<div id="qrcodecontent"></div>
+					</div>
+
+					<a class="paymentlink" href="#"></a>
+
+				</div>
+
+				<div class="buttons">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Got it, now leave me alone</button>
+				</div>
+
+			</div>
+
+		</div>
+	</div>
+</div>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/enc-base64-min.js"></script>
+<script src="//code.jquery.com/jquery-2.1.3.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/async/0.9.0/async.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.5/socket.io.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/q.js/0.9.2/q.min.js"></script>
+
+<script src="/bower_components/qrcode/qrcode.js"></script>
+<script src="/bower_components/loada/loada.js"></script>
+
+<script src="/js/decrypter/decrypter.js"></script>
+<script src="/js/decrypter/keyring.js"></script>
+<script src="/js/decrypter/galleries.js"></script>
+<script src="/js/decrypter/payment.js"></script>
+<script src="/js/decrypter/js.js"></script>

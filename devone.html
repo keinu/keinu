@@ -1,0 +1,113 @@
+---
+layout: landing
+permalink: /devone
+class: home
+---
+
+<style>
+
+	.input-large {
+		height: auto;
+		padding-top: 13px;
+		padding-bottom: 13px;
+	}
+
+	span.name {
+		font-weight: bold;
+	}
+
+</style>
+
+<script type="text/javascript">
+
+	window.onload = function() {
+
+		console.log(document.querySelector("form"));
+
+		document.querySelector("form").onsubmit = function(e) {
+
+			e.preventDefault();
+
+			$.ajax({
+				method: 'POST',
+				url: "https://3ydeu757nf.execute-api.us-east-1.amazonaws.com/dev/one",
+				data: JSON.stringify({
+					bucketName: document.querySelector("[name=bucketName]").value
+				}),
+				contentType: "application/json;charset=utf-8",
+				dataType: 'json'
+			}).done(function(data) {
+
+				document.querySelector("span.name").innerHTML = data.bucketName;
+				document.querySelector("form").style.display = "none";
+				document.querySelector("#done").style.display = "block";
+
+			}).fail(function(err) {
+
+				console.log(err);
+				document.querySelector("span.help-block").innerHTML = "Humm...";
+
+			});
+
+		};
+
+	};
+
+</script>
+
+
+<div class="container">
+
+    <div class="splash-content">
+
+		<h1>
+			DevOne Detroit<br />
+			Nov 5, 2019
+		</h1>
+
+		<p class="lead">
+			Let's create an S3 bucket with the name of your choice.<br />
+		</p>
+
+
+		<form method="POST" name="contact">
+
+			<div class="row">
+				<div class="form-group col-sm-6">
+					<label>
+						S3 Bucket name
+					</label>
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group col-sm-6">
+					<input type="text" name="bucketName" class="form-control input-large" placeholder="Name of your S3 bucket" />
+				</div>
+				<div class="form-group col-sm-6">
+					<button class="btn btn-default" data-loading-text="Sending..." >Let's create it</button>
+				</div>
+				<span class="help-block"></span>
+			</div>
+
+		</form>
+
+    	<div id="done" style="display: none;">
+
+    		<p>
+    			Thank you, let's see if your bucket [<span class="name"></span>] gets created.
+    		</p>
+
+    		<h2>
+    			Heads up!
+    		</h2>
+
+    		<p class="lead">
+    			Get a <a href="">chance to win a ticket</a> for re:invent!
+    		</p>
+
+    	</div>
+
+    </div>
+
+
+</div>

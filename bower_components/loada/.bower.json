@@ -1,0 +1,13 @@
+{
+  "name": "loada",
+  "homepage": "https://github.com/keinu/loada",
+  "_release": "5e563405e1",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "5e563405e150a0231a55c269dac0a4f55d0bfeea"
+  },
+  "_source": "git://github.com/keinu/loada.git",
+  "_target": "*",
+  "_originalSource": "keinu/loada"
+}

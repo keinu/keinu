@@ -1,0 +1,49 @@
+<header id="navwrapper">
+
+  <nav class="navbar navbar-default navbar-fixed-top navbar-inverse">
+
+    <div class="container" role='banner'>
+
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#nav">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+
+        <a href="{{ '/' | prepend: site.baseurl }}" class="navbar-brand">
+          <img src="{{ '/images/keinu-glow.png' | prepend: site.baseurl }}" data-hover-src="{{ '/images/keinu-raw.png'| prepend: site.baseurl }}" alt="{{ site.title }}" />
+        </a>
+
+      </div>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="nav">
+
+        <ul class="nav navbar-nav">
+
+          <li {% if page.url == "/" %}class="active"{% endif %}>
+            <a class="page-link" href="{{ '/' | prepend: site.baseurl }}">About me</a>
+          </li>
+          <li {% if page.url == '/resume/' %}class="active"{% endif %}>
+            <a class="page-link" href="{{ '/resume/' | prepend: site.baseurl }}">Résumé</a>
+          </li>
+          <!--
+          <li {% if page.url == '/music/' %}class="active"{% endif %}>
+            <a class="page-link" href="{{ '/music/' | prepend: site.baseurl }}">Music</a>
+          </li>
+          <li {% if page.url == '/sandpit/' or page.menu == 'sandpit' %}class="active"{% endif %}>
+            <a class="page-link" href="{{ '/sandpit/' | prepend: site.baseurl }}">Sandpit</a>
+          </li>
+          -->
+        </ul>
+
+      </div>
+
+    </div>
+
+  </nav>
+
+</header>
